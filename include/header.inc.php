@@ -15,6 +15,7 @@
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 
+		<link rel="icon" href="img/logo.svg" />
 </head>
     <!-- Début du body -->
 	<body>

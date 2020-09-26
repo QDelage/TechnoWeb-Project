@@ -3,8 +3,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <?php
-		$title = "Site de rencontre pour personnes sportives";?>
+		<title>Site de rencontre pour personnes sportives</title>
 
 		<!-- Bootstrap + CSS perso -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -19,7 +18,4 @@
 </head>
     <!-- Début du body -->
 	<body>
-	<div id="header">
-
-
-	</div>
+	

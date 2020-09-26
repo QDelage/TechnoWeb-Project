@@ -35,7 +35,7 @@ case 5:
     // include("pages/nomDeLaPage.inc.php");
     break;
 
-default : 	include_once('pages/connexion.inc.php');
+default : 	include_once('pages/accueil.inc.php');
 }
 
 ?>

@@ -33,23 +33,26 @@
             </tr>
         </tbody>
         </table>
-        <form>
+
+        <form class="form-group">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">@</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="email" class="form-control" placeholder="Entrez votre adresse mail" aria-label="Mail" aria-describedby="basic-addon1">
             </div>
+
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="exampleInputPassword1">Mot de passe</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrez votre mot de passe">
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
+
+        <br /> <br />
+
+        <label>Pas encore inscript ? </label><button class="btn btn-secondary">Inscription</button>
     </div>
 
     

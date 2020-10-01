@@ -34,6 +34,7 @@
         </tbody>
         </table>
 
+        <!-- Partie connexion -->
         <form class="form-group">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -48,8 +49,12 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Connexion</button>
-            
-            <label class="ml-2 mr-2">Pas encore inscrit ? </label><button class="btn btn-sm btn-secondary">Inscription</button>
+
+            <!-- Redirection inscription -->
+            <label class="ml-2 mr-2">
+                Pas encore inscrit ? 
+                <a href="index.php&page=1" class="btn btn-sm btn-secondary">Inscription</a>
+            </label>
 
         </form>
 

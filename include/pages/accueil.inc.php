@@ -49,11 +49,10 @@
 
             <button type="submit" class="btn btn-primary">Connexion</button>
             
-            <label class="m-2">Pas encore inscrit ? </label><button class="btn btn-sm btn-secondary">Inscription</button>
+            <label class="ml-2 mr-2">Pas encore inscrit ? </label><button class="btn btn-sm btn-secondary">Inscription</button>
 
         </form>
 
-        <br /> <br />
 
     </div>
 

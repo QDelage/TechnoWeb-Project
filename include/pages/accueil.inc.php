@@ -48,11 +48,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Connexion</button>
+            
+            <label class="m-2">Pas encore inscrit ? </label><button class="btn btn-sm btn-secondary">Inscription</button>
+
         </form>
 
         <br /> <br />
 
-        <label>Pas encore inscript ? </label><button class="btn btn-secondary">Inscription</button>
     </div>
 
     

@@ -1,7 +1,8 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img id="logo" src="img/logo.svg" class="d-inline-block align-top" alt="logo">
+<nav class="navbar navbar-light">
+  <a id="nomSite" class="navbar-brand" href="#">
+    <img id="logo" src="img/logo.png" class="d-inline-block align-top" alt="logo">
     Sporty'Meet
   </a>
-  <a class="btn btn-sm btn-outline-secondary" href="index.php?page=1">Inscription</a>
+  <a class="btn btn-sm btn-dark mr-5 text-light btn-outline-secondary"
+    href="index.php?page=1">Inscription</a>
 </nav>

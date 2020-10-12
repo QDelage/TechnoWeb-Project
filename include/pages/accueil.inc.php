@@ -53,7 +53,7 @@
             <!-- Redirection inscription -->
             <label class="ml-2 mr-2">
                 Pas encore inscrit ? 
-                <a href="index.php&page=1" class="btn btn-sm btn-secondary">Inscription</a>
+                <a href="index.php?page=1" class="btn btn-sm btn-secondary">Inscription</a>
             </label>
 
         </form>

@@ -3,5 +3,5 @@
     <img id="logo" src="img/logo.svg" class="d-inline-block align-top" alt="logo">
     Sporty'Meet
   </a>
-  <button class="btn btn-sm btn-outline-secondary" type="button">Inscription</button>
+  <a class="btn btn-sm btn-outline-secondary" href="index.php?page=1">Inscription</a>
 </nav>

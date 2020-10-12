@@ -15,6 +15,11 @@ switch ($page) {
         include("pages/inscription.inc.php");
         break;
 
+    case 2:
+        include("pages/recherche.php");
+        break;
+
+
     default : 	include_once('pages/accueil.inc.php');
 }
 

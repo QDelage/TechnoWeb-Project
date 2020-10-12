@@ -2,19 +2,20 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-		<title>Site de rencontre pour personnes sportives</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Site de rencontre pour personnes sportives</title>
 
-		<!-- Bootstrap + CSS perso -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+	<!-- Bootstrap + CSS perso -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 
-		<!-- JS pour BootStrap -->
-		<script src="js/jquery-3.5.1.slim.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+	<!-- JS pour BootStrap -->
+	<script src="js/jquery-3.5.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-		<link rel="icon" href="img/logo.png" />
+	<link rel="icon" href="img/logo.png" />
 </head>
     <!-- Début du body -->
 	<body>

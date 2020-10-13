@@ -1,7 +1,7 @@
 <!-- Page d'accueil -->
 <h1 class="text-center mt-4">Accueil</h1>
 
-<div class="row">
+<div class="row w-100">
     <div class="col"></div>
     <div class="col-9 border p-3 ">
 

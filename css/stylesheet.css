@@ -1,3 +1,32 @@
+/* Polices d'écriture */
+
+@font-face {
+    font-family: hero;
+    src: url("fonts/Hero/Hero.otf");
+}
+
+@font-face {
+    font-family: heroLight;
+    src: url("fonts/Hero/Hero Light.otf");
+}
+
+@font-face {
+    font-family: proximaLight;
+    src: url("fonts/ProximaLight/Proxima Nova Alt Light.otf");
+}
+
+*{
+    font-family: hero !important;
+}
+
+input, select{
+    font-family: heroLight !important;
+}
+
+h1, h2, h3, h4{
+    font-family: proximaLight !important;
+}
+
 #logo {
     width: 50px;
     height: 50px;

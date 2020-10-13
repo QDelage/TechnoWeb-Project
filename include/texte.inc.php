@@ -11,6 +11,10 @@ if (!empty($_GET["page"])){
 
 switch ($page) {
 
+    case 0:
+        include("pages/accueil.php");
+        break;
+
     case 1:
         include("pages/inscription.php");
         break;

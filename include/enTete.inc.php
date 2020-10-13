@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light">
-  <a id="nomSite" class="navbar-brand" href="#">
+  <a id="nomSite" class="navbar-brand" href="index.php?page=0">
     <img id="logo" src="img/logo.png" class="d-inline-block align-top" alt="logo">
     Sporty'Meet
   </a>

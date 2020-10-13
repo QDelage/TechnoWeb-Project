@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8 border p-3 ">
+    <div class="col-8 border border-dark p-3 ">
 
 
         <form class="form-group">

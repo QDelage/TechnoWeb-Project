@@ -3,7 +3,7 @@
 
 <div class="row w-100">
     <div class="col"></div>
-    <div class="col-9 border border-dark p-3 ">
+    <div class="col-9 p-3 ">
 
         <!-- Liste des sports de la DB -->
         <label>Sports :</label>

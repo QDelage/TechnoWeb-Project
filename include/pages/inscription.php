@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-8 border border-dark p-3 ">
+    <div class="col-8 p-3 ">
 
 
         <!-- Formulaire d'inscription -->
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="departement">Département</label>
                 <select id="departement" class="custom-select">
-                    <option selected>Choisissez votre département</option>
+                    <option selected disabled>Choisissez votre département</option>
                     <option value="1">Ain</option>
                     <option value="2">Aisne</option>
                     <option value="3">Allier</option>
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for="sports">Sport</label>
                 <select id="sports" class="custom-select">
-                    <option selected>Choisissez votre sport</option>
+                    <option selected disabled>Choisissez votre sport</option>
                     <option value="1">Ain</option>
                     <option value="2">Aisne</option>
                     <option value="3">Allier</option>
@@ -46,10 +46,10 @@
             <div class="form-group">
                 <label for="niveau">Niveau</label>
                 <select id="niveau" class="custom-select">
-                    <option selected>Choisissez votre niveau</option>
-                    <option value="1">Ain</option>
-                    <option value="2">Aisne</option>
-                    <option value="3">Allier</option>
+                    <option selected disabled>Choisissez votre niveau</option>
+                    <option value="1">Débutant</option>
+                    <option value="2">Intermédiaire</option>
+                    <option value="3">Confirmé</option>
                 </select>
             </div>
 

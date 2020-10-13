@@ -1,6 +1,6 @@
 <?php
 
-include("pages/enTete.inc.php");
+include("enTete.inc.php");
 
 if (!empty($_GET["page"])){
     $page=$_GET["page"];
@@ -12,7 +12,7 @@ if (!empty($_GET["page"])){
 switch ($page) {
 
     case 1:
-        include("pages/inscription.inc.php");
+        include("pages/inscription.php");
         break;
 
     case 2:
@@ -20,7 +20,7 @@ switch ($page) {
         break;
 
 
-    default : 	include_once('pages/accueil.inc.php');
+    default : 	include_once('pages/accueil.php');
 }
 
 ?>

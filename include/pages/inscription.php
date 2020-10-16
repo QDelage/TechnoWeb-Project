@@ -26,11 +26,18 @@
             </div>
             <div class="form-group">
                 <label for="departement">Département</label>
+                <?php
+                $dptMgr = new DepartementManager($pdo);
+                $dpts = $dptMgr->getAllDepartments($pdo);
+                ?>
                 <select id="departement" class="custom-select">
                     <option selected disabled>Choisissez votre département</option>
-                    <option value="1">Ain</option>
-                    <option value="2">Aisne</option>
-                    <option value="3">Allier</option>
+                    <?php
+                    foreach ($dpts as $key => $value) { ?>
+
+                    <option value="<?php echo $value->getIdDepartement(); ?>"><?php echo $value->getNom(); ?></option>
+                    
+                    <?php } ?>
                 </select>
             </div>
 

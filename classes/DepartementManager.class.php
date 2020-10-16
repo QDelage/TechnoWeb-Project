@@ -14,7 +14,7 @@ class DepartementManager {
         $controles = Array();
 
         $sql = 'SELECT ID_DEPARTEMENT, NOM 
-                    FROM DEPARTEMENT';
+                    FROM departement';
 
         $requete = $this->db->prepare($sql);
         $requete->execute();

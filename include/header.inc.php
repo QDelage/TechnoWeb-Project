@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$pdo = new Mypdo(); ?>
+$pdo = new Mypdo();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -20,6 +20,6 @@ $pdo = new Mypdo(); ?>
 
 	<link rel="icon" href="img/logo.png" />
 </head>
-    <!-- Début du body -->
-	<body>
+<!-- Début du body -->
+<body>
 	

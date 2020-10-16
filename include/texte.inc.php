@@ -1,6 +1,6 @@
 <?php
 
-include("enTete.inc.php");
+include("navbar.inc.php");
 
 if (!empty($_GET["page"])){
     $page=$_GET["page"];

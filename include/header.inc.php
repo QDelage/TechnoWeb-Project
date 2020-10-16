@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+$pdo = new Mypdo(); ?>
+?>
 <!doctype html>
 <html lang="fr">
 <head>

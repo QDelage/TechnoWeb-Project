@@ -10,7 +10,7 @@ class DepartementManager {
         $this->db = $db;
     }
 
-    public function getControlesParProduction($id){
+    public function getAllDepartments($id){
         $controles = Array();
 
         $sql = 'SELECT ID_DEPARTEMENT, NOM 
@@ -23,7 +23,7 @@ class DepartementManager {
             $departements[] = new Departement($departement);
         }
         $requete->closeCursor();
-        
+
         return $departements;
     }
 }

@@ -13,6 +13,16 @@ Serveur Web, Serveur PHP, Serveur MySQL pour la base de données.
 1. Créer une base de données SQL et y importer les données du script présent dans SQL/DB.sql
 2. Configurer la base et le fichier de configuration (include/pages/confid.inc.php) en adéquation pour garantir l'accès
 
+### Arborescence
+
+Les fichiers du projet sont trié selon l'arborescence suivante (fichiers PHP uniquement) :
+
+* /classes/ : Fichiers PHP contenant les classes utilisées dans le projet. La plupart des classes correspondent à des tables de la base de données, ainsi que leur 'manager', l'interface avec la DB.
+* /include/ : Parties incluses sur toutes les pages du site.
+* /include/pages/ : Parties changeant à chaque page web.
+* /index.php : Point d'entrée du site.
+
+
 ## Intégré avec
 
 * [MariaDB](https://mariadb.org/) - Le SGBD utilisé (MySQL fait le même travaille)

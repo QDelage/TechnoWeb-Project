@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 01 oct. 2020 à 21:40
--- Version du serveur :  10.4.13-MariaDB
--- Version de PHP : 7.3.21
+-- Hôte : localhost
+-- Généré le : sam. 17 oct. 2020 à 10:50
+-- Version du serveur :  10.5.6-MariaDB
+-- Version de PHP : 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `sportymeet`
+-- Base de données : `SportyMeet`
 --
 
 -- --------------------------------------------------------
@@ -27,12 +27,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `departement`
 --
 
-DROP TABLE IF EXISTS `departement`;
-CREATE TABLE IF NOT EXISTS `departement` (
-  `id_departement` varchar(3) COLLATE utf8_bin NOT NULL,
-  `nom` varchar(30) COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`id_departement`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `departement` (
+  `id_departement` varchar(3) NOT NULL,
+  `nom` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `departement`
@@ -40,14 +38,6 @@ CREATE TABLE IF NOT EXISTS `departement` (
 
 INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('1', 'AIN'),
-('2', 'AISNE'),
-('3', 'ALLIER'),
-('5', 'HAUTES-ALPES'),
-('4', 'ALPES-DE-HAUTE-PROVENCE'),
-('6', 'ALPES-MARITIMES'),
-('7', 'ARDECHE'),
-('8', 'ARDENNES'),
-('9', 'ARIEGE'),
 ('10', 'AUBE'),
 ('11', 'AUDE'),
 ('12', 'AVEYRON'),
@@ -58,8 +48,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('17', 'CHARENTE-MARITIME'),
 ('18', 'CHER'),
 ('19', 'CORREZE'),
-('2A', 'CORSE-DU-SUD'),
-('2B', 'HAUTE-CORSE'),
+('2', 'AISNE'),
 ('21', 'COTE-DOR'),
 ('22', 'COTES-DARMOR'),
 ('23', 'CREUSE'),
@@ -69,6 +58,9 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('27', 'EURE'),
 ('28', 'EURE-ET-LOIR'),
 ('29', 'FINISTERE'),
+('2A', 'CORSE-DU-SUD'),
+('2B', 'HAUTE-CORSE'),
+('3', 'ALLIER'),
 ('30', 'GARD'),
 ('31', 'HAUTE-GARONNE'),
 ('32', 'GERS'),
@@ -79,6 +71,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('37', 'INDRE-ET-LOIRE'),
 ('38', 'ISERE'),
 ('39', 'JURA'),
+('4', 'ALPES-DE-HAUTE-PROVENCE'),
 ('40', 'LANDES'),
 ('41', 'LOIR-ET-CHER'),
 ('42', 'LOIRE'),
@@ -89,6 +82,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('47', 'LOT-ET-GARONNE'),
 ('48', 'LOZERE'),
 ('49', 'MAINE-ET-LOIRE'),
+('5', 'HAUTES-ALPES'),
 ('50', 'MANCHE'),
 ('51', 'MARNE'),
 ('52', 'HAUTE-MARNE'),
@@ -99,6 +93,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('57', 'MOSELLE'),
 ('58', 'NIEVRE'),
 ('59', 'NORD'),
+('6', 'ALPES-MARITIMES'),
 ('60', 'OISE'),
 ('61', 'ORNE'),
 ('62', 'PAS-DE-CALAIS'),
@@ -109,6 +104,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('67', 'BAS-RHIN'),
 ('68', 'HAUT-RHIN'),
 ('69', 'RHONE'),
+('7', 'ARDECHE'),
 ('70', 'HAUTE-SAONE'),
 ('71', 'SAONE-ET-LOIRE'),
 ('72', 'SARTHE'),
@@ -119,6 +115,7 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('77', 'SEINE-ET-MARNE'),
 ('78', 'YVELINES'),
 ('79', 'DEUX-SEVRES'),
+('8', 'ARDENNES'),
 ('80', 'SOMME'),
 ('81', 'TARN'),
 ('82', 'TARN-ET-GARONNE'),
@@ -129,17 +126,18 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 ('87', 'HAUTE-VIENNE'),
 ('88', 'VOSGES'),
 ('89', 'YONNE'),
+('9', 'ARIEGE'),
 ('90', 'TERRITOIRE-DE-BELFORT'),
 ('91', 'ESSONNE'),
 ('92', 'HAUTS-DE-SEINE'),
 ('93', 'SEINE-SAINT-DENIS'),
 ('94', 'VAL-DE-MARNE'),
 ('95', 'VAL-DOISE'),
-('976', 'MAYOTTE'),
 ('971', 'GUADELOUPE'),
-('973', 'GUYANE'),
 ('972', 'MARTINIQUE'),
-('974', 'REUNION');
+('973', 'GUYANE'),
+('974', 'REUNION'),
+('976', 'MAYOTTE');
 
 -- --------------------------------------------------------
 
@@ -147,16 +145,22 @@ INSERT INTO `departement` (`id_departement`, `nom`) VALUES
 -- Structure de la table `personne`
 --
 
-DROP TABLE IF EXISTS `personne`;
-CREATE TABLE IF NOT EXISTS `personne` (
+CREATE TABLE `personne` (
   `id_personne` int(11) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
-  `depart` int(11) NOT NULL,
+  `id_departement` varchar(3) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `mdpHash` varchar(64) NOT NULL,
-  PRIMARY KEY (`id_personne`)
+  `mdpHash` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `personne`
+--
+
+INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `id_departement`, `mail`, `mdpHash`) VALUES
+(2, 'Smith', 'John', '1', 'john.smith@yopmail.com', ''),
+(3, 'Jane', 'Doe', '1', 'jane.doe@yopmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -164,14 +168,11 @@ CREATE TABLE IF NOT EXISTS `personne` (
 -- Structure de la table `personnesmatch`
 --
 
-DROP TABLE IF EXISTS `personnesmatch`;
-CREATE TABLE IF NOT EXISTS `personnesmatch` (
+CREATE TABLE `personnesmatch` (
   `id_personne1` int(11) NOT NULL,
   `id_personne2` int(11) NOT NULL,
   `statuspersonne1` varchar(15) NOT NULL,
-  `statuspersonne2` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_personne1`,`id_personne2`),
-  KEY `personne2` (`id_personne2`)
+  `statuspersonne2` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -180,13 +181,10 @@ CREATE TABLE IF NOT EXISTS `personnesmatch` (
 -- Structure de la table `pratique`
 --
 
-DROP TABLE IF EXISTS `pratique`;
-CREATE TABLE IF NOT EXISTS `pratique` (
+CREATE TABLE `pratique` (
   `id_personne` int(11) NOT NULL,
   `id_sport` int(11) NOT NULL,
-  `niveau` varchar(20) NOT NULL,
-  KEY `personne_sport` (`id_personne`),
-  KEY `sport_personne` (`id_sport`)
+  `niveau` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -195,16 +193,84 @@ CREATE TABLE IF NOT EXISTS `pratique` (
 -- Structure de la table `sport`
 --
 
-DROP TABLE IF EXISTS `sport`;
-CREATE TABLE IF NOT EXISTS `sport` (
+CREATE TABLE `sport` (
   `id_sport` int(11) NOT NULL,
-  `nom` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_sport`)
+  `nom` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `sport`
+--
+
+INSERT INTO `sport` (`id_sport`, `nom`) VALUES
+(1, 'Football'),
+(2, 'Basket'),
+(3, 'Tennis');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `departement`
+--
+ALTER TABLE `departement`
+  ADD PRIMARY KEY (`id_departement`);
+
+--
+-- Index pour la table `personne`
+--
+ALTER TABLE `personne`
+  ADD PRIMARY KEY (`id_personne`),
+  ADD KEY `personne_departement` (`id_departement`);
+
+--
+-- Index pour la table `personnesmatch`
+--
+ALTER TABLE `personnesmatch`
+  ADD PRIMARY KEY (`id_personne1`,`id_personne2`),
+  ADD KEY `personne2` (`id_personne2`),
+  ADD KEY `personne1` (`id_personne1`) USING BTREE;
+
+--
+-- Index pour la table `pratique`
+--
+ALTER TABLE `pratique`
+  ADD PRIMARY KEY (`id_personne`,`id_sport`),
+  ADD KEY `personne_sport` (`id_personne`) USING BTREE,
+  ADD KEY `sport_personne` (`id_sport`);
+
+--
+-- Index pour la table `sport`
+--
+ALTER TABLE `sport`
+  ADD PRIMARY KEY (`id_sport`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `personne`
+--
+ALTER TABLE `personne`
+  MODIFY `id_personne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `sport`
+--
+ALTER TABLE `sport`
+  MODIFY `id_sport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `personne`
+--
+ALTER TABLE `personne`
+  ADD CONSTRAINT `personne_departement` FOREIGN KEY (`id_departement`) REFERENCES `departement` (`id_departement`);
 
 --
 -- Contraintes pour la table `personnesmatch`

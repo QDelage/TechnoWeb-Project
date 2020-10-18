@@ -27,10 +27,17 @@
                 </div>
                 <div class="form-group">
                     <label for="departement">Departement</label>
+                    <?php
+                    $dptMgr = new DepartementManager($pdo);
+                    $dpts = $dptMgr->getAllDepartments($pdo);
+                    ?>
                     <select id="departement" class="custom-select">
                         <?php
-                        //faire liaison base de donnée select
-                        ?>
+                        foreach ($dpts as $key => $value) { ?>
+
+                            <option value="<?php echo $value->getIdDepartement(); ?>"><?php echo $value->getNom(); ?></option>
+
+                        <?php } ?>
                     </select>
                 </div>
         </div>

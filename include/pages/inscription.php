@@ -5,23 +5,24 @@
 <div class="row">
     <div class="col"></div>
     <div class="col-8 p-3 ">
+    <?php print_r($_POST) ?>
 
-
+    <?php if (empty($_POST)) { ?>
     <!-- Formulaire d'inscription -->
-    <form class="form-group">
+    <form class="form-group" method="POST" action="index.php?page=1">
         
         <div class="form-group">
             <label for="nom">Nom</label>
-            <input type="text" id="nom" class="form-control" placeholder="Nom">
+            <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom">
         </div>
         <div class="form-group">
             <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" class="form-control" placeholder="Prénom">
+            <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom">
         </div>
 
         <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailInfo" placeholder="Entrez votre mail">
+            <input type="email" name="mail" class="form-control" id="email" aria-describedby="emailInfo" placeholder="Entrez votre mail">
             <small id="emailInfo" class="form-text text-muted">Nous ne partagerons jamais votre adresse avec des tiers.</small>
         </div>
         <div class="form-group">
@@ -30,7 +31,7 @@
             $dptMgr = new DepartementManager($pdo);
             $dpts = $dptMgr->getAllDepartments($pdo);
             ?>
-            <select id="departement" class="custom-select">
+            <select required id="departement" name="departement" class="custom-select">
                 <option selected disabled>Choisissez votre département</option>
                 <?php
                 foreach ($dpts as $key => $value) { ?>
@@ -42,8 +43,8 @@
         </div>
 
         <div class="form-group">
-            <label for="sports">Sport</label>
-            <select id="sports" class="custom-select">
+            <label for="sport">Sport</label>
+            <select required id="sport" name="sport" class="custom-select">
                 <option selected disabled>Choisissez votre sport</option>
                 <option value="1">Ain</option>
                 <option value="2">Aisne</option>
@@ -52,7 +53,7 @@
         </div>
         <div class="form-group">
             <label for="niveau">Niveau</label>
-            <select id="niveau" class="custom-select">
+            <select required id="niveau" name="niveau" class="custom-select">
                 <option selected disabled>Choisissez votre niveau</option>
                 <option value="1">Débutant</option>
                 <option value="2">Intermédiaire</option>
@@ -64,6 +65,12 @@
         <button class="btn btn-primary" type="submit">S'inscrire</button>
 
         </form>
+
+        <?php } else { ?>
+
+        <h2>Inscription réussie</h2>
+
+        <?php } ?>
 
 
     </div>

@@ -10,7 +10,7 @@ class SportManager {
         $this->db = $db;
     }
 
-    public function getAllDepartments($id){
+    public function getAllSports($id){
         $controles = Array();
 
         $sql = 'SELECT ID_SPORT, NOM 

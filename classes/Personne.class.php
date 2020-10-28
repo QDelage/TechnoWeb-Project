@@ -20,7 +20,7 @@ class Personne {
                 case 'ID_PERSONNE':$this->setidPersonne($valeur);break;
                 case 'NOM':$this->setNom($valeur);break;
                 case 'PRENOM':$this->setPrenom($valeur);break;
-                case 'ID_DEOARTEMENT':$this->setIDDepartement($valeur);break;
+                case 'ID_DEPARTEMENT':$this->setIDDepartement($valeur);break;
                 case 'MAIL':$this->setMail($valeur);break;
                 case 'MDPHASH':$this->setMDP($valeur);break;
             }
@@ -88,28 +88,28 @@ class Personne {
      * @param mixed $prenom
      */
     public function setPrenom($prenom){
-        $this->nom = $prenom;
+        $this->prenom = $prenom;
     }
 
     /**
      * @param mixed $idDepartement
      */
     public function setIDDepartement($idDepartement){
-        $this->nom = $idDepartement;
+        $this->idDepartement = $idDepartement;
     }
 
     /**
      * @param mixed $mail
      */
     public function setMail($mail){
-        $this->nom = $mail;
+        $this->mail = $mail;
     }
 
     /**
      * @param mixed $mdp
      */
     public function setMDP($mdp){
-        $this->nom = $mdp;
+        $this->mdp = $mdp;
     }
 
     

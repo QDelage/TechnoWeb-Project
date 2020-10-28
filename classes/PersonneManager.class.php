@@ -16,7 +16,7 @@ class PersonneManager {
             'INSERT INTO personne (NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH) VALUES
             (:nom, :prenom, :dpt, :mail, :mdp);');
 
-        $requete->bindValue(':nom',$pers->getPerNom());
+        $requete->bindValue(':nom',$pers->getNom());
         $requete->bindValue(':prenom',$pers->getPrenom());
         $requete->bindValue(':dpt',$pers->getIdDepartement());
         $requete->bindValue(':mail',$pers->getMail());
@@ -27,7 +27,7 @@ class PersonneManager {
         $salt = "48@!alsd";
         $pwd = hash('sha256', $pwd).$salt;
         $pwd = hash('sha256', $pwd);
-        $requete->bindValue(':pwd',$pwd);
+        $requete->bindValue(':mdp',$pwd);
 
         $requete->execute();
 

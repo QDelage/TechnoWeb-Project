@@ -1,7 +1,7 @@
 <h1 class="text-center mt-4">Recherche</h1>
 
 <div class="container-fluid">
-        <div class="row">
+    <div class="row">
         <div class="col"></div>
 
         <div class="col-9 p-3 ">
@@ -9,11 +9,19 @@
             <form class="form-group">
                 <div class="form-group">
                     <label for="sport">Sport</label>
+                    <?php
+                    $sprsMgr = new SportManager($pdo);
+                    $sprs = $sprsMgr->getAllSports($pdo);
+                    ?>
                     <select id="sport" class="custom-select">
-                        <?php
-                        //faire liaison base de donnée select
-                        ?>
 
+                        <option selected disabled>Choisissez votre sport</option>
+                        <?php
+                        foreach ($sprs as $key => $value) { ?>
+
+                            <option value="<?php echo $value->getIdSport(); ?>"><?php echo $value->getNom(); ?></option>
+
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -43,6 +51,6 @@
         </div>
         <div class="col"></div>
     </div>
-    </div>
+</div>
 </div>
 </form>

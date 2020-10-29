@@ -64,7 +64,11 @@ class PersonneManager {
         $requete->closeCursor();
 
 
-        return $personnes[0];
+        if (isset($personnes[0])) {
+            return $personnes[0];
+        }else{
+            return false;
+        }
     }
 
     

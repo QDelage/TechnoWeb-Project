@@ -35,6 +35,7 @@
         </tbody>
         </table>
 
+        <?php if(!isset($_SESSION['pers'])) { ?>
         <!-- Partie connexion -->
         <form class="form-group" method="post" action="index.php?page=0">
             <div class="input-group mb-3">
@@ -58,6 +59,7 @@
             </label>
 
         </form>
+        <?php } ?>
 
     <?php } elseif (!isset($_GET['deconnexion'])) {
         $mail = $_POST['mail'];
@@ -67,7 +69,8 @@
         $pers = $persMgr->connexion($mail, $pwd);
 
         if ($pers) {
-            $_SESSION['pers'] = ($pers);
+            $_SESSION['pers'] = $pers;
+            print '<p class="text-center">Bienvennue '.($_SESSION['pers'])->getPrenom().' !</p>';
         }else { ?>
         <h2 class="text-center">Mail / Mot de passe incorect</h2>
 

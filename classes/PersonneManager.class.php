@@ -58,11 +58,13 @@ class PersonneManager {
 
         $requete->execute();
 
-        $personne = $requete->fetch(PDO::FETCH_OBJ);
-
+        while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {
+            $personnes[] = new Personne($personne);
+        }
         $requete->closeCursor();
 
-        return $personne; // Retourne true ou false
+
+        return $personnes[0];
     }
 
     

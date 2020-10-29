@@ -17,6 +17,7 @@ $pdo = new Mypdo();
 	<script src="js/jquery-3.5.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/fontawesome.js"></script>
 
 	<link rel="icon" href="img/logo.png" />
 </head>

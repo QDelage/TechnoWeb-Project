@@ -15,21 +15,26 @@
     src: url("fonts/ProximaLight/Proxima Nova Alt Light.otf");
 }
 
-*{
+* {
     font-family: hero !important;
 }
 
-input, select{
+input,
+select {
     font-family: heroLight !important;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
     font-family: proximaLight !important;
 }
 
+
 /* Reste du CSS */
 
-#TitreSite{
+#TitreSite {
     display: inline;
 }
 
@@ -42,15 +47,24 @@ h1, h2, h3, h4{
     background: linear-gradient(to right, #372772, #3D348B, 90%, #55caff);
 }
 
+#myNavbar {
+    text-align: right;
+    padding-right: 20%;
+}
+
+#navButton {
+    background-color: transparent;
+}
+
 #nomSite {
     color: #df4add !important;
 }
 
 body {
-    background: rgb(180,58,58);
-    background: linear-gradient(50deg, rgba(180,58,58,0.33) 0%, rgba(204,48,48,0.33) 14%, rgba(213,45,45,0.33) 23%, rgba(222,41,41,0.33) 31%, rgba(252,120,54,0.33) 55%, rgba(253,129,66,0.33) 68%, rgba(253,132,70,0.33) 73%, rgba(255,142,85,0.33) 88%);
+    background: rgb(180, 58, 58);
+    background: linear-gradient(50deg, rgba(180, 58, 58, 0.33) 0%, rgba(204, 48, 48, 0.33) 14%, rgba(213, 45, 45, 0.33) 23%, rgba(222, 41, 41, 0.33) 31%, rgba(252, 120, 54, 0.33) 55%, rgba(253, 129, 66, 0.33) 68%, rgba(253, 132, 70, 0.33) 73%, rgba(255, 142, 85, 0.33) 88%);
 }
 
-html{
+html {
     height: 100%;
 }

@@ -38,9 +38,9 @@ class PersonneManager {
     }
 
     public function connexion($mail, $pwd){
-        $sql = 'SELECT MAIL, MDPHASH 
-                    FROM PERSONNE 
-                    WHERE per_login=:log AND per_pwd=:pwd';
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH 
+                    FROM personne 
+                    WHERE mail=:log AND mdpHash=:pwd';
 
         $requete = $this->db->prepare($sql);
 

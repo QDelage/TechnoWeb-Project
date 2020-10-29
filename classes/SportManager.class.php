@@ -14,7 +14,7 @@ class SportManager {
         $controles = Array();
 
         $sql = 'SELECT ID_SPORT, NOM 
-                    FROM SPORT';
+                    FROM sport';
 
         $requete = $this->db->prepare($sql);
         $requete->execute();

@@ -5,7 +5,6 @@
 <div class="row">
     <div class="col"></div>
     <div class="col-8 p-3 ">
-    <?php print_r($_POST) ?>
 
     <?php if (empty($_POST)) { ?>
     <!-- Formulaire d'inscription -->

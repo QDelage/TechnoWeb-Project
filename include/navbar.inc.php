@@ -13,11 +13,18 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">Accueil</a></li>
+        <?php if (!isset($_SESSION['pers'])) {
+          // Si on n'est pas connecté ?>
+        <li class="active"><a href="index.php">Accueil / Connexion</a></li>
         <li><a href="index.php?page=1">Inscription</a></li>
-        <li><a href="index.php?page=2">Recherche</a></li>
 
+        <?php } else { 
+          // Si on est connecté?>
+        <li><a href="index.php?page=2">Recherche</a></li>
         <li><a href="index.php?page=0&deconnexion=true">Deconnexion</a></li>
+
+        <?php } ?>
+
       </ul>
     </div>
   </div>

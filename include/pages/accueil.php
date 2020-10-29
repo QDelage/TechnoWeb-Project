@@ -5,7 +5,7 @@
     <div class="col"></div>
     <div class="col-9 p-3 ">
 
-        <?php if (empty($_POST)) { ?>
+        <?php if (empty($_POST) && !isset($_GET['deconnexion'])) { ?>
         <!-- Liste des sports de la DB -->
         <label>Sports :</label>
         <table class="table">
@@ -59,7 +59,7 @@
 
         </form>
 
-    <?php } else {
+    <?php } elseif (!isset($_GET['deconnexion'])) {
         $mail = $_POST['mail'];
         $pwd = $_POST['motdepasse'];
         $persMgr = new PersonneManager($pdo);
@@ -78,11 +78,16 @@
 
         <?php }
 
+        } else{
+            // Deconnexion
+            session_destroy(); ?>
+            
+            <h2 class="text-center">Vous avez été deconnecté</h2>
+            <p class="text-center">Redirection en cours...</p>
+        <?php 
+        header('refresh:2;url=index.php');    }
+
         ?>
-
-
-
-    <?php } ?>
 
 
 

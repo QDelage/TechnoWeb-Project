@@ -16,6 +16,8 @@
         <li class="active"><a href="index.php">Accueil</a></li>
         <li><a href="index.php?page=1">Inscription</a></li>
         <li><a href="index.php?page=2">Recherche</a></li>
+
+        <li><a href="index.php?page=0&deconnexion=true">Deconnexion</a></li>
       </ul>
     </div>
   </div>

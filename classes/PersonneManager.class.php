@@ -57,7 +57,6 @@ class PersonneManager {
 
 
         $requete->execute();
-
         while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {
             $personnes[] = new Personne($personne);
         }
@@ -69,6 +68,53 @@ class PersonneManager {
         }else{
             return false;
         }
+    }
+
+    public function recherche($id_sport, $niveau,$id_departement) {
+
+        $sql = 'SELECT NOM,PRENOM FROM personne INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE WHERE ID_DEPARTEMENT LIKE :id_departement AND NIVEAU LIKE :niveau AND ID_SPORT LIKE :id_sport';
+        $requete = $this->db->prepare($sql);
+
+        if ($id_departement != null) {
+            $requete->bindValue(':id_departement', $id_departement, PDO::PARAM_INT);
+
+        }
+        else {
+
+            $requete->bindValue(':id_departement', "%", PDO::PARAM_STR);
+
+        }
+        if ($id_sport != null) {
+            $requete->bindValue(':id_sport', $id_sport, PDO::PARAM_INT);
+
+        }
+        else {
+
+            $requete->bindValue(':id_sport',"%", PDO::PARAM_STR);
+
+        }
+        if ($niveau != null) {
+            $requete->bindValue(':niveau', $niveau, PDO::PARAM_INT);
+
+        }
+        else {
+
+            $requete->bindValue(':niveau', "%", PDO::PARAM_STR);
+        }
+        $requete->execute();
+
+        while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {
+            $personnes[] = new Personne($personne);
+        }
+        $requete->closeCursor();
+
+
+        if (isset($personnes[0])) {
+            return $personnes;
+        }else{
+            return false;
+        }
+
     }
 
     

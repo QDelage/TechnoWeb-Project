@@ -18,19 +18,24 @@
         </thead>
         <tbody>
             <tr>
+                <?php
+                    $prtqMngr = new PratiqueManager($pdo);
+                    $sportsReputes = $prtqMngr->topSports();
+                    print_r($sportsReputes);
+                ?>
             <th scope="row">1</th>
-                <td>Football</td>
-                <td>1490</td>
+                <td><?php echo $sportsReputes[0]?></td>
+                <td><?php echo $sportsReputes[0]["NBPRATIQUANTS"]?></td>
             </tr>
             <tr>
             <th scope="row">2</th>
-                <td>BasketBall</td>
-                <td>1320</td>
+                <td><?php echo $sportsReputes[1]["NOM"]?></td>
+                <td><?php echo $sportsReputes[1]["NBPRATIQUANTS"]?></td>
             </tr>
             <tr>
             <th scope="row">3</th>
-                <td>Rugby</td>
-                <td>1042</td>
+                <td><?php echo $sportsReputes[2]["NOM"]?></td>
+                <td><?php echo $sportsReputes[2]["NBPRATIQUANTS"]?></td>
             </tr>
         </tbody>
         </table>

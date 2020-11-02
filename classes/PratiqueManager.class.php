@@ -26,6 +26,16 @@ class PratiqueManager {
         $requete->closeCursor();
 
     }
+    public function topSports () {
+        $sql = 'SELECT NOM, COUNT(id_personne) AS NBPRATIQUANTS FROM pratique INNER JOIN sport ON pratique.id_sport = sport.id_sport GROUP BY pratique.id_sport ORDER BY COUNT(id_personne) DESC LIMIT 3 ';
+        $requete = $this->db->prepare($sql);
+        //print_r($requete->fetch(PDO::FETCH_OBJ));
+           while ($pratique = $requete->fetch(PDO::FETCH_OBJ)) {
+               $pratiques[] = $pratique;
+           }
+        $requete->closeCursor();
+        return $pratiques;
+    }
 
 
 

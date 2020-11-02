@@ -5,6 +5,7 @@ class Pratique {
     private $idSport;
     private $niveau;
     private $nbParticipant;
+    private $nomSport;
 
 
     public function __construct($valeurs = array()){
@@ -19,7 +20,8 @@ class Pratique {
                 case 'ID_PERSONNE':$this->setidPersonne($valeur);break;
                 case 'ID_SPORT':$this->setidSport($valeur);break;
                 case 'NIVEAU':$this->setNiveau($valeur);break;
-                case 'NBPARTICIPANTS:': $this->setnbParticipants($valeur); break;
+                case 'NBPARTICIPANTS': $this->setnbParticipants($valeur); break;
+                case 'NOM'; $this->setNomSport($valeur); break;
             }
         }
     }
@@ -45,8 +47,14 @@ class Pratique {
     /**
      * @return mixed
      */
-    public function getnbParticpant(){
+    public function getnbParticipant(){
         return $this->nbParticipant;
+    }
+    /**
+     * @return mixed
+     */
+    public function getNomSport(){
+        return $this->nomSport;
     }
 
     public function setidPersonne($idPersonne){
@@ -62,6 +70,9 @@ class Pratique {
     }
     public function setnbParticipants($nbParticipant) {
         $this->nbParticipant = $nbParticipant;
+    }
+    public function setNomSport ($nomSport) {
+        $this->nomSport= $nomSport;
     }
 
 

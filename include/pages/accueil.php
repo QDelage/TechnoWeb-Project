@@ -21,21 +21,20 @@
                     <?php
                     $prtqMngr = new PratiqueManager($pdo);
                     $sportsReputes = $prtqMngr->topSports();
-                    print_r($sportsReputes);
                     ?>
                     <th scope="row">1</th>
-                    <td><?php echo $sportsReputes[0]->getNom() ?></td>
-                    <td><?php echo $sportsReputes[0]->getnbParticipants() ?></td>
+                    <td><?php echo $sportsReputes[0]->getNomSport() ?></td>
+                    <td><?php echo $sportsReputes[0]->getnbParticipant() ?></td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td><?php echo $sportsReputes[1]->getNom() ?></td>
-                    <td><?php echo $sportsReputes[1]->getnbParticipants() ?></td>
+                    <td><?php echo $sportsReputes[1]->getNomSport() ?></td>
+                    <td><?php echo $sportsReputes[1]->getnbParticipant() ?></td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td><?php echo $sportsReputes[2]->getNom() ?></td>
-                    <td><?php echo $sportsReputes[2]->getnbParticipants() ?></td>
+                    <td><?php echo $sportsReputes[2]->getNomSport() ?></td>
+                    <td><?php echo $sportsReputes[2]->getnbParticipant() ?></td>
                 </tr>
                 </tbody>
             </table>

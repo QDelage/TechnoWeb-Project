@@ -37,7 +37,7 @@ class PratiqueManager
         GROUP BY pratique.id_sport ORDER BY COUNT(id_personne) DESC LIMIT 3 ';
         $requete = $this->db->prepare($sql);
         while ($pratique = $requete->fetch(PDO::FETCH_OBJ)) {
-            $pratiques[] = new Participe($pratique);
+            $pratiques[] = new Pratique($pratique);
         }
         $requete->closeCursor();
         return $pratiques;

@@ -10,6 +10,9 @@ class DepartementManager {
         $this->db = $db;
     }
 
+    /**
+     * Obtenir tous les départements de la DB
+     */
     public function getAllDepartments($id){
         $controles = Array();
 

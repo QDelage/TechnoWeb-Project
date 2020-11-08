@@ -11,6 +11,9 @@ class PersonneManager {
     }
 
 
+    /**
+     * Inscrire un utilisateur dans la DB
+     */
     public function inscription($pers){
         $requete = $this->db->prepare(
             'INSERT INTO personne (NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH) VALUES
@@ -37,6 +40,9 @@ class PersonneManager {
         return $id;
     }
 
+    /**
+     * Vérifie les informations de connexion (mail et mdp) d'un utilisateur pour le connecter
+     */
     public function connexion($mail, $pwd){
         $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH 
                     FROM personne 
@@ -70,37 +76,41 @@ class PersonneManager {
         }
     }
 
-    public function recherche($id_sport, $niveau,$id_departement) {
+    /**
+     * Permet de rechercher une personne dans la DB selon trois critères
+     * Un sport, un niveau, ou un département
+     */
+    public function recherche($id_sport, $niveau, $id_departement) {
 
-        $sql = 'SELECT NOM,PRENOM FROM personne INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE WHERE ID_DEPARTEMENT LIKE :id_departement AND NIVEAU LIKE :niveau AND ID_SPORT LIKE :id_sport';
+        $sql = 'SELECT NOM, PRENOM FROM personne 
+            INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE 
+            WHERE ID_DEPARTEMENT LIKE :id_departement AND 
+            NIVEAU LIKE :niveau 
+            AND ID_SPORT LIKE :id_sport';
         $requete = $this->db->prepare($sql);
 
+        // Rempli les "champs" de la requête à la volée
         if ($id_departement != null) {
             $requete->bindValue(':id_departement', $id_departement, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':id_departement', "%", PDO::PARAM_STR);
-
         }
+
         if ($id_sport != null) {
             $requete->bindValue(':id_sport', $id_sport, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':id_sport',"%", PDO::PARAM_STR);
-
         }
+
         if ($niveau != null) {
             $requete->bindValue(':niveau', $niveau, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':niveau', "%", PDO::PARAM_STR);
         }
+
         $requete->execute();
 
         while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {

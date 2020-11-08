@@ -68,14 +68,34 @@
 
                 if ($recherche == false) {
                     ?>
-                    <p>Personne ne correspond à votre recherche</p>
+                    <p>Personne ne correspond à votre recherche...</p>
                     <?php
                 } else {
+                    ?>
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
                     foreach ($recherche as $personne) {
                         ?>
-                        <p><?php echo $personne->getNom() . " " . $personne->getPrenom() ?></p>
-                        <?php
+                    <tr>
+                        <td><?php echo $personne->getPrenom()?></td>
+                        <td><?php echo $personne->getNom()?></td>
+                        <td><button class="btn btn-light">Profil</button></td>
+                    </tr>
+                    <?php
                     }
+                    ?>
+                    </tbody>
+                    </table>
+                    <?php
                 }
 
                 ?>

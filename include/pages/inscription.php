@@ -31,7 +31,7 @@
             <label for="departement">Département</label>
             <?php
             $dptMgr = new DepartementManager($pdo);
-            $dpts = $dptMgr->getAllDepartments($pdo);
+            $dpts = $dptMgr->getAllDepartments();
             ?>
             <select required id="departement" name="departement" class="custom-select">
                 <option selected disabled>Choisissez votre département</option>

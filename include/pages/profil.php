@@ -12,7 +12,7 @@
 
         <?php if(empty($_POST)){ ?>
         
-        <img class="img-circle mb-4" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
+        <img id="ImgProfil" class="img-circle mb-4" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
 
         <form class="mb-5" method="post" action="index.php?page=3" enctype="multipart/form-data">
             <input type="file" name="img">

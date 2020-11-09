@@ -23,6 +23,10 @@ switch ($page) {
         include("pages/recherche.php");
         break;
 
+    case 3:
+        include("pages/profil.php");
+        break;
+
 
     default : 	include_once('pages/accueil.php');
 }

@@ -9,6 +9,8 @@
 <div class="row">
     <div class="col"></div>
     <div class="col-5 p-3 text-center">
+
+        <?php if(empty($_POST)){ ?>
         
         <img class="img-circle mb-4" src="img/profils/default.png"><br />
 
@@ -18,10 +20,10 @@
         <!-- Bouton pour afficher le formulaire de modification de CET élément -->
         <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('nom');">Modifer</button>
         <br /><br />
-        <form id="profilFormNom" class="hide mb-4" method="post" action="">
+        <form id="profilFormNom" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le nom -->
             <label>Nouveau nom : </label>
-            <input type="text">
+            <input name="nom" type="text">
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('nom');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -32,10 +34,10 @@
         </label>
         <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('prenom');">Modifer</button>
         <br /><br />
-        <form id="profilFormPrenom" class="hide mb-4" method="post" action="">
+        <form id="profilFormPrenom" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
             <label>Nouveau prénom : </label>
-            <input type="text">
+            <input name="prenom" type="text">
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('prenom');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -49,7 +51,7 @@
         </label>
         <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('departement');">Modifer</button>
         <br /><br />
-        <form id="profilFormDepartement" class="hide mb-4" method="post" action="">
+        <form id="profilFormDepartement" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le département -->
             <label>Nouveau département : </label>
             <select required id="departement" name="departement" class="custom-select w-50">
@@ -71,10 +73,10 @@
         </label>
         <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('mail');">Modifer</button>
         <br /><br />
-        <form id="profilFormMail" class="hide mb-4" method="post" action="">
+        <form id="profilFormMail" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
             <label>Nouvelle adresse mail : </label>
-            <input type="mail">
+            <input name="mail" type="mail">
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('mail');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -85,15 +87,43 @@
         </label>
         <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('mdp');">Modifer</button>
         <br /><br />
-        <form id="profilFormMDP" class="hide mb-4" method="post" action="">
+        <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
             <label>Nouvelle adresse mail : </label>
-            <input type="password">
+            <input name="password" type="password">
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('mdp');" class="btn btn-danger btn-sm" type="button">X</button>
         </form>
 
+        <?php } else { 
+            $persMgr = new PersonneManager($pdo);
+            $dptMgr = new DepartementManager($pdo);
+            $pers = $_SESSION['pers']; // Passage par référence, donc la modification est faite aussi en session
+            ?>
+
+            <?php 
+            if (isset($_POST['nom'])) {
+                $pers->setNom($_POST['nom']);
+            }
+
+            if (isset($_POST['prenom'])) {
+                $pers->setPrenom($_POST['prenom']);
+            }
+
+            if (isset($_POST['departement'])) {
+                $pers->setIDDepartement($_POST['departement']);
+            }
+
+            if (isset($_POST['mail'])) {
+                $pers->setMail($_POST['mail']);
+            }
+
+            $persMgr->update($pers);
+            ?>
+
+
+        <?php } ?>
     </div>
     <div class="col"></div>
 </div>

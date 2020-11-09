@@ -124,7 +124,32 @@ class PersonneManager {
         }else{
             return false;
         }
+    }
 
+    /**
+     * Permet de modifier les informations d'une personne, sauf sa photo et son mdp
+     */
+    public function update($personne){
+        $sql = 'UPDATE personne
+                    SET nom=:nom,
+                    prenom=:prenom,
+                    id_departement=:dpt,
+                    mail=:mail
+                    WHERE ID_PERSONNE=:id';
+
+        $requete = $this->db->prepare($sql);
+
+        // Requete préparée
+        $requete->bindValue(':nom',$personne->getNom(),PDO::PARAM_STR);
+        $requete->bindValue(':prenom',$personne->getPrenom(),PDO::PARAM_STR);
+        $requete->bindValue(':dpt',$personne->getIdDepartement(),PDO::PARAM_INT);
+        $requete->bindValue(':mail',$personne->getMail(),PDO::PARAM_STR);
+        $requete->bindValue(':id',$personne->getidPersonne(),PDO::PARAM_INT);
+
+
+        $requete->execute();
+
+        $requete->closeCursor();
     }
 
     

@@ -3,7 +3,10 @@
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-5 p-3 ">
+    <div class="col-5 p-3 text-center">
+        
+        <img class="img-circle mb-4" src="img/profils/default.png"><br />
+
         <label>Nom : <?php 
         print $_SESSION['pers']->getNom(); ?>
         </label><br /><br />

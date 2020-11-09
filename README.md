@@ -8,6 +8,8 @@ Nous nous inspirons du sujet auquel nous souhaitons apporter quelques modificati
 
 Serveur Web, Serveur PHP, Serveur MySQL pour la base de données.
 
+Il faut le droit en écriture dans le dossier img/profils/ pour pouvoir modifier les photos de profils !
+
 ### Installation
 
 1. Créer une base de données SQL et y importer les données du script présent dans SQL/DB.sql

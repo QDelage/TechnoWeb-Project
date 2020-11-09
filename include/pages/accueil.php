@@ -79,6 +79,7 @@
             if ($pers) {
                 $_SESSION['pers'] = $pers;
                 print '<p class="text-center">Bienvennue ' . ($_SESSION['pers'])->getPrenom() . ' !</p>';
+                header('refresh:2;url=index.php?page=3');
             } else { ?>
                 <h2 class="text-center">Mail / Mot de passe incorect</h2>
 

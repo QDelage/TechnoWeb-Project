@@ -130,35 +130,37 @@
                 $names = explode(".", $_FILES['img']["name"]);
                 $name = $_SESSION['pers']->getidPersonne().".".$names[1];
                 $target_file = $target_dir . basename($name);
+
+                // On vérifie s'il s'agit bien d'un fichier image
+                if(isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["img"]["tmp_name"]);
+                    if($check !== false) {
+                        $uploadOk = 1;
+                    } else {
+                        echo "Le fichier n'est pas une image...";
+                        $uploadOk = 0;
+                    }
+                    // Vérifie la taille du fichier, 500 kB max
+                    if ($_FILES["img"]["size"] > 500000) {
+                        echo "Désolé, votre fichier est trop gros...";
+                        $uploadOk = 0;
+                    }
+                }
+
+                if ($uploadOk == 0) {
+                    echo "Désolé, votre photo n'a pas été téléversée.";
+                // Si tout va bien on téléverse le fichier
+                } else {
+                    if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                        echo "Le fichier ". htmlspecialchars( basename( $_FILES["img"]["name"])). " a été téléversé.";
+                        $_SESSION['pers']->setPhoto($name);
+                    } else {
+                        echo "Désolé, votre photo n'a pas pu être modifiée.";
+                    }
+                }
             }
 
-            // On vérifie s'il s'agit bien d'un fichier image
-            if(isset($_POST["submit"])) {
-                $check = getimagesize($_FILES["img"]["tmp_name"]);
-                if($check !== false) {
-                    $uploadOk = 1;
-                } else {
-                    echo "Le fichier n'est pas une image...";
-                    $uploadOk = 0;
-                }
-                // Vérifie la taille du fichier, 500 kB max
-                if ($_FILES["img"]["size"] > 500000) {
-                    echo "Désolé, votre fichier est trop gros...";
-                    $uploadOk = 0;
-                }
-            }
-
-            if ($uploadOk == 0) {
-                echo "Désolé, votre photo n'a pas été téléversée.";
-            // Si tout va bien on téléverse le fichier
-            } else {
-                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                    echo "Le fichier ". htmlspecialchars( basename( $_FILES["img"]["name"])). " a été téléversé.";
-                    $_SESSION['pers']->setPhoto($name);
-                } else {
-                    echo "Désolé, votre photo n'a pas pu être modifiée.";
-                }
-            }
+            
 
             $persMgr->update($pers);
 

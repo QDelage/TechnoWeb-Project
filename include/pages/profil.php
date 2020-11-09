@@ -12,7 +12,7 @@
 
         <?php if(empty($_POST)){ ?>
         
-        <img class="img-circle mb-4" src="img/profils/default.png"><br />
+        <img class="img-circle mb-4" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
 
         <label>Nom : <?php 
         print $_SESSION['pers']->getNom(); ?>

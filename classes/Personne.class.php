@@ -4,6 +4,7 @@ class Personne {
     private $idPersonne;
     private $nom;
     private $prenom;
+    private $photo;
     private $idDepartement;
     private $mail;
     private $mdp;
@@ -20,6 +21,7 @@ class Personne {
                 case 'ID_PERSONNE':$this->setidPersonne($valeur);break;
                 case 'NOM':$this->setNom($valeur);break;
                 case 'PRENOM':$this->setPrenom($valeur);break;
+                case 'PHOTO':$this->setPhoto($valeur);break;
                 case 'ID_DEPARTEMENT':$this->setIDDepartement($valeur);break;
                 case 'MAIL':$this->setMail($valeur);break;
                 case 'MDPHASH':$this->setMDP($valeur);break;
@@ -46,6 +48,13 @@ class Personne {
      */
     public function getPrenom(){
         return $this->prenom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto(){
+        return $this->photo;
     }
 
     /**
@@ -89,6 +98,13 @@ class Personne {
      */
     public function setPrenom($prenom){
         $this->prenom = $prenom;
+    }
+
+    /**
+     * @param mixed $prenom
+     */
+    public function setPhoto($photo){
+        $this->photo = $photo;
     }
 
     /**

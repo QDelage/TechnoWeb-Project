@@ -10,7 +10,10 @@ class DepartementManager {
         $this->db = $db;
     }
 
-    public function getAllDepartments($id){
+    /**
+     * Obtenir tous les départements de la DB
+     */
+    public function getAllDepartments(){
         $controles = Array();
 
         $sql = 'SELECT ID_DEPARTEMENT, NOM 
@@ -25,6 +28,28 @@ class DepartementManager {
         $requete->closeCursor();
 
         return $departements;
+    }
+
+    /**
+     * Obtenir un département selon son ID
+     */
+    public function getDepartement($id){
+        $controles = Array();
+
+        $sql = 'SELECT ID_DEPARTEMENT, NOM 
+                    FROM departement
+                    WHERE ID_DEPARTEMENT = :id';
+
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':id', $id, PDO::PARAM_STR);
+        $requete->execute();
+
+        while ($departement = $requete->fetch(PDO::FETCH_OBJ)) {
+            $departements[] = new Departement($departement);
+        }
+        $requete->closeCursor();
+
+        return $departements[0];
     }
 }
 

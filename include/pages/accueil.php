@@ -69,6 +69,7 @@
             <?php } ?>
 
         <?php } elseif (!isset($_GET['deconnexion'])) {
+            // Connexion
             $mail = $_POST['mail'];
             $pwd = $_POST['motdepasse'];
             $persMgr = new PersonneManager($pdo);

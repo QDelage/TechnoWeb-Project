@@ -33,6 +33,10 @@ switch ($page) {
         }
         break;
 
+    case 3:
+        include("pages/profil.php");
+        break;
+
 
     default : 	include_once('pages/accueil.php');
 }

@@ -10,6 +10,9 @@ class SportManager {
         $this->db = $db;
     }
 
+    /**
+     * Obtenir tous les sports de la DB
+     */
     public function getAllSports($id){
         $controles = Array();
 

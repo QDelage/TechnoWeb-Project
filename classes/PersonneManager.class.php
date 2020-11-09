@@ -11,6 +11,9 @@ class PersonneManager {
     }
 
 
+    /**
+     * Inscrire un utilisateur dans la DB
+     */
     public function inscription($pers){
         $requete = $this->db->prepare(
             'INSERT INTO personne (NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH) VALUES
@@ -37,8 +40,11 @@ class PersonneManager {
         return $id;
     }
 
+    /**
+     * Vérifie les informations de connexion (mail et mdp) d'un utilisateur pour le connecter
+     */
     public function connexion($mail, $pwd){
-        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH 
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, PHOTO, ID_DEPARTEMENT, MAIL, MDPHASH 
                     FROM personne 
                     WHERE mail=:log AND mdpHash=:pwd';
 
@@ -70,37 +76,41 @@ class PersonneManager {
         }
     }
 
-    public function recherche($id_sport, $niveau,$id_departement) {
+    /**
+     * Permet de rechercher une personne dans la DB selon trois critères
+     * Un sport, un niveau, ou un département
+     */
+    public function recherche($id_sport, $niveau, $id_departement) {
 
-        $sql = 'SELECT NOM,PRENOM FROM personne INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE WHERE ID_DEPARTEMENT LIKE :id_departement AND NIVEAU LIKE :niveau AND ID_SPORT LIKE :id_sport';
+        $sql = 'SELECT NOM, PRENOM FROM personne 
+            INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE 
+            WHERE ID_DEPARTEMENT LIKE :id_departement AND 
+            NIVEAU LIKE :niveau 
+            AND ID_SPORT LIKE :id_sport';
         $requete = $this->db->prepare($sql);
 
+        // Rempli les "champs" de la requête à la volée
         if ($id_departement != null) {
             $requete->bindValue(':id_departement', $id_departement, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':id_departement', "%", PDO::PARAM_STR);
-
         }
+
         if ($id_sport != null) {
             $requete->bindValue(':id_sport', $id_sport, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':id_sport',"%", PDO::PARAM_STR);
-
         }
+
         if ($niveau != null) {
             $requete->bindValue(':niveau', $niveau, PDO::PARAM_INT);
-
         }
         else {
-
             $requete->bindValue(':niveau', "%", PDO::PARAM_STR);
         }
+
         $requete->execute();
 
         while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {
@@ -114,7 +124,34 @@ class PersonneManager {
         }else{
             return false;
         }
+    }
 
+    /**
+     * Permet de modifier les informations d'une personne, sauf son mdp
+     */
+    public function update($personne){
+        $sql = 'UPDATE personne
+                    SET nom=:nom,
+                    prenom=:prenom,
+                    photo=:photo,
+                    id_departement=:dpt,
+                    mail=:mail
+                    WHERE ID_PERSONNE=:id';
+
+        $requete = $this->db->prepare($sql);
+
+        // Requete préparée
+        $requete->bindValue(':nom',$personne->getNom(),PDO::PARAM_STR);
+        $requete->bindValue(':prenom',$personne->getPrenom(),PDO::PARAM_STR);
+        $requete->bindValue(':photo',$personne->getPhoto(),PDO::PARAM_STR);
+        $requete->bindValue(':dpt',$personne->getIdDepartement(),PDO::PARAM_INT);
+        $requete->bindValue(':mail',$personne->getMail(),PDO::PARAM_STR);
+        $requete->bindValue(':id',$personne->getidPersonne(),PDO::PARAM_INT);
+
+
+        $requete->execute();
+
+        $requete->closeCursor();
     }
 
     

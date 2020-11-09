@@ -16,11 +16,21 @@ switch ($page) {
         break;
 
     case 1:
-        include("pages/inscription.php");
+        if (!isset($_SESSION["pers"])) {
+            include("pages/inscription.php");
+        }
+        else {
+            include("pages/accueil.php");
+        }
         break;
 
     case 2:
-        include("pages/recherche.php");
+        if (!isset($_SESSION["pers"])) {
+            include("pages/recherche.php");
+        }
+        else {
+            include("pages/accueil.php");
+        }
         break;
 
     case 3:

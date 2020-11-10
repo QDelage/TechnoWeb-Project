@@ -8,14 +8,22 @@
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-5 p-3 text-center">
+    <div class="col-8 p-3 text-center">
 
         <?php if(empty($_POST)){ ?>
         
-        <img id="ImgProfil" class="img-circle mb-4" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
+        <img id="ImgProfil" class="img-circle mb-4 d-none d-sm-inline" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
+        <img id="ImgProfilSmall" class="img-circle mb-4 d-sm-none" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
 
         <form class="mb-5" method="post" action="index.php?page=3" enctype="multipart/form-data">
-            <input type="file" name="img" required>
+            <div class="file-field w-100">
+                <div class="btn btn-primary btn-sm float-left w-100 mb-3">
+                    <span>Choose file</span>
+                    <input type="file" class="w-100" name="img" required>
+                </div>
+            </div>
+            <br/>
+            <br/>
             <input class="btn btn-primary btn-sm" type="submit" value="Modifier" name="submit">
         </form>
 

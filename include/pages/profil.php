@@ -18,9 +18,35 @@
             header('refresh:2;url=index.php');
         } else {
             $prsnMngr = new PersonneManager($pdo);
-            $personne = $prsnMngr->getPersonne($_POST['id']);
-            print_r($personne);
-        }
+            $personne = $prsnMngr->getPersonne($_POST['id']); ?>
+
+
+        <img id="ImgProfil" class="img-circle mb-4 d-none d-sm-inline" src="img/profils/<?php print $personne->getPhoto(); ?>"><br />
+        <img id="ImgProfilSmall" class="img-circle mb-4 d-sm-none" src="img/profils/<?php print $personne->getPhoto(); ?>"><br />
+
+
+
+        <label>Nom : <?php 
+        print $personne->getNom(); ?>
+        </label>
+        <br /><br />
+
+
+        <label>Prénom : <?php 
+        print $personne->getPrenom(); ?>
+        </label>
+        <br /><br />
+
+
+        <label>Département : <?php
+        $dptMgr = new DepartementManager($pdo);
+        $dpt = $dptMgr->getDepartement($personne->getIdDepartement());
+        $dpts = $dptMgr->getAllDepartments();
+        print $dpt->getNom(); ?>
+        </label>
+        <br /><br />
+
+        <?php }
         ?>
     </div>
     <div class="col"></div>

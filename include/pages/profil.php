@@ -15,7 +15,7 @@
         <img id="ImgProfil" class="img-circle mb-4" src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br />
 
         <form class="mb-5" method="post" action="index.php?page=3" enctype="multipart/form-data">
-            <input type="file" name="img">
+            <input type="file" name="img" required>
             <input class="btn btn-primary btn-sm" type="submit" value="Modifier" name="submit">
         </form>
 
@@ -28,7 +28,7 @@
         <form id="profilFormNom" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le nom -->
             <label>Nouveau nom : </label>
-            <input name="nom" type="text">
+            <input name="nom" type="text" id="inputNom" required>
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('nom');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -42,7 +42,7 @@
         <form id="profilFormPrenom" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
             <label>Nouveau prénom : </label>
-            <input name="prenom" type="text">
+            <input name="prenom" type="text" required>
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('prenom');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -81,7 +81,7 @@
         <form id="profilFormMail" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
             <label>Nouvelle adresse mail : </label>
-            <input name="mail" type="mail">
+            <input name="mail" type="mail" required>
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('mail');" class="btn btn-danger btn-sm" type="button">X</button>
@@ -94,14 +94,14 @@
         <br /><br />
         <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
-            <label>Nouvelle adresse mail : </label>
-            <input name="password" type="password">
+            <label>Nouvelle mot de passe : </label>
+            <input name="password" type="password" required>
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">
             <button onclick="modifierProfilCacherChamp('mdp');" class="btn btn-danger btn-sm" type="button">X</button>
         </form>
 
-        <?php } else { 
+        <?php } else {
             $persMgr = new PersonneManager($pdo);
             $dptMgr = new DepartementManager($pdo);
             $pers = $_SESSION['pers']; // Passage par référence, donc la modification est faite aussi en session
@@ -110,18 +110,26 @@
             <?php 
             if (isset($_POST['nom'])) {
                 $pers->setNom($_POST['nom']);
+                header('refresh:0;url=index.php?page=3');
             }
 
             if (isset($_POST['prenom'])) {
                 $pers->setPrenom($_POST['prenom']);
+                header('refresh:0;url=index.php?page=3');
             }
 
             if (isset($_POST['departement'])) {
                 $pers->setIDDepartement($_POST['departement']);
+                header('refresh:0;url=index.php?page=3');
             }
 
             if (isset($_POST['mail'])) {
                 $pers->setMail($_POST['mail']);
+                header('refresh:0;url=index.php?page=3');
+            }
+            if (isset($_POST['password'])) {
+                $pers->setMDP($_POST['password']);
+                header('refresh:0;url=index.php?page=3');
             }
 
             if (isset($_FILES['img'])) {
@@ -154,11 +162,14 @@
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                         echo "Le fichier ". htmlspecialchars( basename( $_FILES["img"]["name"])). " a été téléversé.";
                         $_SESSION['pers']->setPhoto($name);
+                        header('refresh:0;url=index.php?page=3');
                     } else {
                         echo "Désolé, votre photo n'a pas pu être modifiée.";
                     }
                 }
+
             }
+
 
             
 

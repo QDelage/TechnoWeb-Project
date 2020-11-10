@@ -135,7 +135,8 @@ class PersonneManager {
                     prenom=:prenom,
                     photo=:photo,
                     id_departement=:dpt,
-                    mail=:mail
+                    mail=:mail,
+                    mdpHash=:pwd
                     WHERE ID_PERSONNE=:id';
 
         $requete = $this->db->prepare($sql);
@@ -147,6 +148,12 @@ class PersonneManager {
         $requete->bindValue(':dpt',$personne->getIdDepartement(),PDO::PARAM_INT);
         $requete->bindValue(':mail',$personne->getMail(),PDO::PARAM_STR);
         $requete->bindValue(':id',$personne->getidPersonne(),PDO::PARAM_INT);
+        // Il faut de nouveau hasher le mot de passe fourni avec le même grain de sel
+        $pwd = $personne->getMDP();
+        $salt = "48@!alsd";
+        $pwd = hash('sha256', $pwd).$salt;
+        $pwd = hash('sha256', $pwd);
+        $requete->bindValue(':pwd',$pwd);
 
 
         $requete->execute();

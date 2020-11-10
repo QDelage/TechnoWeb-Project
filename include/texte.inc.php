@@ -18,8 +18,7 @@ switch ($page) {
     case 1:
         if (!isset($_SESSION["pers"])) {
             include("pages/inscription.php");
-        }
-        else {
+        } else {
             include("pages/accueil.php");
         }
         break;
@@ -27,14 +26,17 @@ switch ($page) {
     case 2:
         if (isset($_SESSION["pers"])) {
             include("pages/recherche.php");
-        }
-        else {
+        } else {
             include("pages/accueil.php");
         }
         break;
 
     case 3:
-        include("pages/profil.php");
+        if (isset($_SESSION["pers"])) {
+            include("pages/modifierProfil.php");
+        } else {
+            include("pages/accueil.php");
+        }
         break;
 
 

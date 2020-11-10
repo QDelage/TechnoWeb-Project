@@ -7,6 +7,7 @@ function modifierProfilAfficherChamp($champ){
         case "nom":
             document.getElementById("profilFormNom").style.display = "block";
             break;
+
         case "prenom":
             document.getElementById("profilFormPrenom").style.display = "block";
             break;

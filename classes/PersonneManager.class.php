@@ -127,7 +127,7 @@ class PersonneManager {
     }
 
     /**
-     * Permet de modifier les informations d'une personne, sauf son mdp
+     * Permet de modifier les informations d'une personne
      */
     public function update($personne){
         $sql = 'UPDATE personne

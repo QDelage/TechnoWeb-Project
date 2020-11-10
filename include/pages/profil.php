@@ -94,7 +94,7 @@
         <br /><br />
         <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
             <!-- Formulaire pour modifier le prénom -->
-            <label>Nouvelle mot de passe : </label>
+            <label>Nouveau mot de passe : </label>
             <input name="password" type="password" required>
 
             <input class="btn btn-primary btn-sm" type="submit" value="OK">

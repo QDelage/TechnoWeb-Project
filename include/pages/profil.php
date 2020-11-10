@@ -17,7 +17,9 @@
             print '<p>Redirection vers l\'accueil en cours...</p>';
             header('refresh:2;url=index.php');
         } else {
-            print $_POST['id'];
+            $prsnMngr = new PersonneManager($pdo);
+            $personne = $prsnMngr->getPersonne($_POST['id']);
+            print_r($personne);
         }
         ?>
     </div>

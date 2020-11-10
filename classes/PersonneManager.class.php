@@ -161,6 +161,33 @@ class PersonneManager {
         $requete->closeCursor();
     }
 
-    
+    /**
+     * Permet d'obtenir une personne selon son ID
+     * On ne récupère que les informations nécessaires (pas de mdp ni de mail)
+     */
+    public function getPersonne($id){
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, PHOTO, ID_DEPARTEMENT 
+                    FROM personne 
+                    WHERE ID_PERSONNE=:id';
+
+        $requete = $this->db->prepare($sql);
+
+        // Requete préparée
+        $requete->bindValue(':id',$id,PDO::PARAM_INT);
+
+
+        $requete->execute();
+        while ($personne = $requete->fetch(PDO::FETCH_OBJ)) {
+            $personnes[] = new Personne($personne);
+        }
+        $requete->closeCursor();
+
+
+        if (isset($personnes[0])) {
+            return $personnes[0];
+        }else{
+            return false;
+        }
+    }
 }
 

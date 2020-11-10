@@ -102,9 +102,13 @@
                     foreach ($recherche as $personne) {
                         ?>
                     <tr>
-                        <td><?php echo $personne->getPrenom()?></td>
-                        <td><?php echo $personne->getNom()?></td>
-                        <td><button class="btn btn-light">Profil</button></td>
+                        <td><?php echo $personne->getPrenom();?></td>
+                        <td><?php echo $personne->getNom();?></td>
+                        <td>
+                            <form method="post" action="index.php?page=4">
+                                <button name="id" value="<?php print $personne->getidPersonne(); ?>" class="btn btn-light">Profil</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php
                     }

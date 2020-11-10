@@ -82,7 +82,7 @@ class PersonneManager {
      */
     public function recherche($id_sport, $niveau, $id_departement) {
 
-        $sql = 'SELECT NOM, PRENOM FROM personne 
+        $sql = 'SELECT NOM, PRENOM, personne.ID_PERSONNE FROM personne 
             INNER JOIN pratique ON personne.ID_PERSONNE = pratique.ID_PERSONNE 
             WHERE ID_DEPARTEMENT LIKE :id_departement AND 
             NIVEAU LIKE :niveau 

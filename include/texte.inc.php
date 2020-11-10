@@ -39,6 +39,14 @@ switch ($page) {
         }
         break;
 
+    case 4:
+        if (isset($_SESSION["pers"])) {
+            include("pages/profil.php");
+        } else {
+            include("pages/accueil.php");
+        }
+        break;
+
 
     default : 	include_once('pages/accueil.php');
 }

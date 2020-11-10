@@ -25,7 +25,7 @@ switch ($page) {
         break;
 
     case 2:
-        if (!isset($_SESSION["pers"])) {
+        if (isset($_SESSION["pers"])) {
             include("pages/recherche.php");
         }
         else {

@@ -11,7 +11,7 @@
     <div class="col-8 p-3 text-center">
 
         <?php 
-        if (empty($_POST['id'])) {
+        if (empty($_POST['id']) && empty($_POST['like'])) {
             print '<h2>Erreur 403 : Accès interdit</h2>';
             print '<p>Le lien que vous avez suivi doit être corrompu, ou le profil recherché n\'existe pas / plus.</p>';
             print '<p>Redirection vers l\'accueil en cours...</p>';
@@ -45,9 +45,23 @@
         print $dpt->getNom(); ?>
         </label>
         <br /><br />
+        <br /><br />
 
-        <?php }
-        ?>
+        <?php if (isset($_POST['like'])) {
+
+        
+
+        } ?>
+
+        <label>Vous aimez cette personne ?</label><br/>
+        <form method="post" action="index.php?page=4">
+            <button name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+        </form>
+
+        <?php } ?>
+
+        
+
     </div>
     <div class="col"></div>
 </div>

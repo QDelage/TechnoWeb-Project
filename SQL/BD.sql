@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 09 nov. 2020 à 11:13
+-- Généré le : mer. 11 nov. 2020 à 13:16
 -- Version du serveur :  10.5.7-MariaDB
 -- Version de PHP : 7.4.12
 
@@ -1167,8 +1167,8 @@ INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `photo`, `id_departement
 CREATE TABLE `personnesmatch` (
   `id_personne1` int(11) NOT NULL,
   `id_personne2` int(11) NOT NULL,
-  `statuspersonne1` varchar(15) NOT NULL,
-  `statuspersonne2` varchar(15) NOT NULL
+  `statutpersonne1` varchar(15) NOT NULL,
+  `statutpersonne2` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

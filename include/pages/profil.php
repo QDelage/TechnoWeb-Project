@@ -49,13 +49,24 @@
 
         <?php if (isset($_POST['like'])) {
 
-        
+        $pmMgr = new PersonnesMatchManager($pdo);
+
+        $match = $pmMgr->getMatchEntre($_SESSION['pers']->getidPersonne(), $_POST['id']);
+
+        if ($match) {
+            print '<p>IT\'S A MATCH</p>';
+        }else {
+            print '<p>En attente...</p>';
+        }
 
         } ?>
 
         <label>Vous aimez cette personne ?</label><br/>
         <form method="post" action="index.php?page=4">
-            <button name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+            <!-- Pour garder l'ID sur la page réactualisée -->
+            <input hidden name="id" value="<?php print $_POST['id']; ?>">
+
+            <button type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
         </form>
 
         <?php } ?>

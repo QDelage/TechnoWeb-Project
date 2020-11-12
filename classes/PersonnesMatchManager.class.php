@@ -39,4 +39,22 @@ class PersonnesMatchManager {
         }
     }
 
+    /**
+     * Crée un match entre deux personnes
+     *  $id1 : la personne ÉMÉTRICE du match, $id2 : la réceptrice
+     */
+    public function createMatchEntre($id1, $id2) {
+        $requete = $this->db->prepare(
+            'INSERT INTO personnesmatch (ID_PERSONNE1, ID_PERSONNE2, STATUTPERSONNE1, STATUTPERSONNE2)
+                VALUES (:id1, :id2, "DEMANDE", "EN ATTENTE")');
+
+        $requete->bindValue(':id1', $id1);
+        $requete->bindValue(':id2', $id2);
+
+
+        $requete->execute();
+        $requete->closeCursor();
+
+    }
+
 }

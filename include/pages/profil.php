@@ -55,8 +55,13 @@
 
         if ($match) {
             print '<p>IT\'S A MATCH</p>';
+
+            
+
         }else {
             print '<p>En attente...</p>';
+
+            $pmMgr->createMatchEntre($_SESSION['pers']->getidPersonne(),  $_POST['id']);
         }
 
         } ?>
@@ -66,7 +71,15 @@
             <!-- Pour garder l'ID sur la page réactualisée -->
             <input hidden name="id" value="<?php print $_POST['id']; ?>">
 
-            <button type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+            <button <?php 
+            if ($match) {
+                print ' disabled ';
+            }
+            ?> type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+
+            <?php if ($match) {
+                print '<br/><br/></br.><p>Vous avez déjà liké cette personne. Attendez sa réponse !</p>';
+            } ?>
         </form>
 
         <?php } ?>

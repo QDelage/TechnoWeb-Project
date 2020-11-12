@@ -75,7 +75,7 @@
 
             <button <?php 
             if (isset($match)) {
-                print ' disabled ';
+                print ' hidden ';
             }
             ?> type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
 

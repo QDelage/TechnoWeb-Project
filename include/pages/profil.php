@@ -68,16 +68,16 @@
 
         } ?>
 
-        <label>Vous aimez cette personne ?</label><br/>
-        <form method="post" action="index.php?page=4">
-            <!-- Pour garder l'ID sur la page réactualisée -->
-            <input hidden name="id" value="<?php print $_POST['id']; ?>">
-
-            <button <?php 
+        <form method="post" action="index.php?page=4"  <?php 
             if (isset($match)) {
                 print ' hidden ';
             }
-            ?> type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+            ?>>
+            <!-- Pour garder l'ID sur la page réactualisée -->
+            <label>Vous aimez cette personne ?</label><br/>
+            <input hidden name="id" value="<?php print $_POST['id']; ?>">
+
+            <button type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
 
             <?php if (isset($match)) {
                 print '<br/><br/></br.><p>Vous avez déjà liké cette personne. Attendez sa réponse !</p>';

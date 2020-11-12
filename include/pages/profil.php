@@ -54,10 +54,12 @@
         $match = $pmMgr->getMatchEntre($_SESSION['pers']->getidPersonne(), $_POST['id']);
 
         if ($match) {
-            print '<p>IT\'S A MATCH</p>';
-
-            
-
+            if ($match->isReciproque()) {
+                print '<p>IT\'S A MATCH</p>';
+            }else {
+                $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
+                print '<p>IT\'S A MATCH</p>';
+            }
         }else {
             print '<p>En attente...</p>';
 
@@ -72,12 +74,12 @@
             <input hidden name="id" value="<?php print $_POST['id']; ?>">
 
             <button <?php 
-            if ($match) {
+            if (isset($match)) {
                 print ' disabled ';
             }
             ?> type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
 
-            <?php if ($match) {
+            <?php if (isset($match)) {
                 print '<br/><br/></br.><p>Vous avez déjà liké cette personne. Attendez sa réponse !</p>';
             } ?>
         </form>

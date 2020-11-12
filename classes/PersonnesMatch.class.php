@@ -80,5 +80,20 @@ class PersonnesMatch {
     public function setStatutPers2($statutPers2) {
         $this->statutPers2 = $statutPers2;
     }
+
+    /**
+     * Permet de savoir si un match est réciproque ou non
+     */
+    public function isReciproque() {
+        if ($this->statutPers1 == "VALIDE" && $this->statutPers2 == "VALIDE") {
+            return true;
+        }
+
+        if ($this->statutPers1 == "DEMANDE" && $this->statutPers2 == "VALIDE") {
+            return true;
+        }
+
+        return false;
+    }
 }
 

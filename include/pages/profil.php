@@ -55,6 +55,7 @@
 
         if ($match) {
             if ($match->isReciproque()) {
+                $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
                 print '<p>IT\'S A MATCH</p>';
             }else {
                 $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
@@ -77,7 +78,7 @@
             <label>Vous aimez cette personne ?</label><br/>
             <input hidden name="id" value="<?php print $_POST['id']; ?>">
 
-            <button type="submit" name="like" value="$_POST['id']" class="btn btn-success">Liker</button>
+            <button type="submit" name="like" value="<?php print $_POST['id']; ?>" class="btn btn-success">Liker</button>
 
             <?php if (isset($match)) {
                 print '<br/><br/></br.><p>Vous avez déjà liké cette personne. Attendez sa réponse !</p>';

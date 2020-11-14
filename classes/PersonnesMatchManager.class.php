@@ -63,7 +63,8 @@ class PersonnesMatchManager {
     public function validerMatch($id1, $id2) {
         $requete = $this->db->prepare(
             'UPDATE personnesmatch SET STATUTPERSONNE2 = "VALIDE"
-                WHERE ID_PERSONNE1 = :id1 AND ID_PERSONNE2 = :id2');
+                WHERE ID_PERSONNE1 = :id2 AND ID_PERSONNE2 = :id1'
+        );
 
         $requete->bindValue(':id1', $id1);
         $requete->bindValue(':id2', $id2);

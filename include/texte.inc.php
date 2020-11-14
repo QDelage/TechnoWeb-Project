@@ -47,6 +47,13 @@ switch ($page) {
         }
         break;
 
+    case 5:
+        if (isset($_SESSION["pers"])) {
+            include("pages/matchs.php");
+        } else {
+            include("pages/accueil.php");
+        }
+        break;
 
     default : 	include_once('pages/accueil.php');
 }

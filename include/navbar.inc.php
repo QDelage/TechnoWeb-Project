@@ -21,6 +21,7 @@
                 // Si on est connecté?>
                 <li><a href="index.php?page=3">Profil</a></li>
                 <li><a href="index.php?page=2">Recherche</a></li>
+                <li><a href="index.php?page=5">Matchs en attente</a></li>
                 <li><a href="index.php?page=0&deconnexion=true">Deconnexion</a></li>
 
                 <?php } ?>

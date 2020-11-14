@@ -56,10 +56,10 @@
         if ($match) {
             if ($match->isReciproque()) {
                 $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
-                print '<p>IT\'S A MATCH</p>';
+                print '<p>Vous vous plaisez mutuellement !</p>';
             }else {
                 $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
-                print '<p>IT\'S A MATCH</p>';
+                print '<p>Vous vous plaisez mutuellement !</p>';
             }
         }else {
             print '<p>En attente...</p>';

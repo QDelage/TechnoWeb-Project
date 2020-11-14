@@ -57,6 +57,9 @@ class PersonnesMatchManager {
 
     }
 
+    /**
+     * Permet de valider un match en attente
+     */
     public function validerMatch($id1, $id2) {
         $requete = $this->db->prepare(
             'UPDATE personnesmatch SET STATUTPERSONNE2 = "VALIDE"
@@ -69,6 +72,34 @@ class PersonnesMatchManager {
         $requete->execute();
         $requete->closeCursor();
 
+    }
+
+    /**
+     * Permet d'obtenir la liste des matchs en attente d'une personne
+     */
+    public function getMatchsEnAttente($id) {
+        $requete = $this->db->prepare(
+            'SELECT ID_PERSONNE1, ID_PERSONNE2, STATUTPERSONNE1, STATUTPERSONNE2
+                FROM personnesmatch
+                WHERE ID_PERSONNE2 = :id
+                AND statutpersonne2 != "VALIDE"
+                AND statutpersonne2 != "REFUSE"');
+
+        $requete->bindValue(':id', $id);
+
+
+        $requete->execute();
+        while ($personneMatch = $requete->fetch(PDO::FETCH_OBJ)) {
+            $personneMatchs[] = new PersonnesMatch($personneMatch);
+        }
+        $requete->closeCursor();
+
+
+        if (isset($personneMatchs[0])) {
+            return $personneMatchs[0];
+        }else{
+            return false;
+        }
     }
 
 }

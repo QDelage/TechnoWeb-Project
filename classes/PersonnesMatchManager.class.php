@@ -96,7 +96,7 @@ class PersonnesMatchManager {
 
 
         if (isset($personneMatchs[0])) {
-            return $personneMatchs[0];
+            return $personneMatchs;
         }else{
             return false;
         }

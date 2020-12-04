@@ -15,6 +15,10 @@
             <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" required>
         </div>
         <div class="form-group">
+            <label for="description">Decription</label>
+            <textarea id="Description" name="description" class="form-control" placeholder="Decripttion de votre profil"></textarea>
+        </div>
+        <div class="form-group">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" required>
         </div>
@@ -83,7 +87,8 @@
                 "PRENOM" => $_POST["prenom"],
                 "ID_DEPARTEMENT" => $_POST["departement"],
                 "MAIL" => $_POST["mail"],
-                "MDPHASH" => $_POST["motdepasse"]
+                "MDPHASH" => $_POST["motdepasse"],
+                "DESCRIPTION" =>$_POST["description"]
             );
             $pers = new Personne($valuesPersonne);
             $persInsert = new PersonneManager($pdo);

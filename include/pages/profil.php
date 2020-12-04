@@ -50,6 +50,10 @@
             print $dpt->getNom(); ?>
             </label>
             <br /><br />
+            <label>Description : <?php
+                print $personne->getDescription(); ?>
+            </label>
+            <br /><br />
             <br /><br />
 
             <?php 

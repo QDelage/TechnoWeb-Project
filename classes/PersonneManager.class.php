@@ -16,13 +16,14 @@ class PersonneManager {
      */
     public function inscription($pers){
         $requete = $this->db->prepare(
-            'INSERT INTO personne (NOM, PRENOM, ID_DEPARTEMENT, MAIL, MDPHASH) VALUES
-            (:nom, :prenom, :dpt, :mail, :mdp);');
+            'INSERT INTO personne (NOM, PRENOM, DESCRIPTION, ID_DEPARTEMENT, MAIL, MDPHASH) VALUES
+            (:nom, :prenom,:description, :dpt, :mail, :mdp);');
 
         $requete->bindValue(':nom',$pers->getNom());
         $requete->bindValue(':prenom',$pers->getPrenom());
         $requete->bindValue(':dpt',$pers->getIdDepartement());
         $requete->bindValue(':mail',$pers->getMail());
+        $requete->bindValue(':description',$pers->getDescription());
 
         // Afin de ne pas stocker le mot de passe en clair, on le hash en SHA-256
         // Et pour ne pas le rendre vulnérable aux attaques "facilement", on y ajoute un grain de sel
@@ -133,6 +134,7 @@ class PersonneManager {
         $sql = 'UPDATE personne
                     SET nom=:nom,
                     prenom=:prenom,
+                    description=:description,
                     photo=:photo,
                     id_departement=:dpt,
                     mail=:mail,
@@ -144,6 +146,7 @@ class PersonneManager {
         // Requete préparée
         $requete->bindValue(':nom',$personne->getNom(),PDO::PARAM_STR);
         $requete->bindValue(':prenom',$personne->getPrenom(),PDO::PARAM_STR);
+        $requete->bindValue(':description',$personne->getDescription(),PDO::PARAM_STR);
         $requete->bindValue(':photo',$personne->getPhoto(),PDO::PARAM_STR);
         $requete->bindValue(':dpt',$personne->getIdDepartement(),PDO::PARAM_INT);
         $requete->bindValue(':mail',$personne->getMail(),PDO::PARAM_STR);
@@ -166,7 +169,7 @@ class PersonneManager {
      * On ne récupère que les informations nécessaires (pas de mdp ni de mail)
      */
     public function getPersonne($id){
-        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, PHOTO, ID_DEPARTEMENT 
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, DESCRIPTION, PHOTO, ID_DEPARTEMENT 
                     FROM personne 
                     WHERE ID_PERSONNE=:id';
 

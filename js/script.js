@@ -11,6 +11,9 @@ function modifierProfilAfficherChamp($champ){
         case "prenom":
             document.getElementById("profilFormPrenom").style.display = "block";
             break;
+        case "description":
+            document.getElementById("profilFormDescription").style.display = "block";
+            break;
 
         case "departement":
             document.getElementById("profilFormDepartement").style.display = "block";
@@ -42,6 +45,9 @@ function modifierProfilCacherChamp($champ){
 
         case "prenom":
             document.getElementById("profilFormPrenom").style.display = "none";
+            break;
+        case "description":
+            document.getElementById("profilFormDescription").style.display = "none";
             break;
 
         case "departement":

@@ -8,6 +8,7 @@ class Personne {
     private $idDepartement;
     private $mail;
     private $mdp;
+    private $description;
 
     public function __construct($valeurs = array()){
         if (!empty($valeurs)){
@@ -25,6 +26,7 @@ class Personne {
                 case 'ID_DEPARTEMENT':$this->setIDDepartement($valeur);break;
                 case 'MAIL':$this->setMail($valeur);break;
                 case 'MDPHASH':$this->setMDP($valeur);break;
+                case 'DESCRIPTION': $this->setDescription($valeur);break;
             }
         }
     }
@@ -77,6 +79,12 @@ class Personne {
     public function getMDP(){
         return $this->mdp;
     }
+    /**
+     * @return mixed
+     */
+    public function getDescription(){
+        return $this->description;
+    }
 
 
     /**
@@ -126,6 +134,12 @@ class Personne {
      */
     public function setMDP($mdp){
         $this->mdp = $mdp;
+    }
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description){
+        $this->description = $description;
     }
 
     

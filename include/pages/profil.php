@@ -4,6 +4,10 @@
     <?php
     // Pour éviter les problèmes, il a été décidé de ne modifier qu'un seul champ à la fois
     // La modification d'un profil étant rare, celà ne devrait pas trop impacter le client
+    if (isset($_SESSION["buffid"])) {
+        $_POST["id"] = $_SESSION["buffid"];
+        unset($_SESSION["buffid"]);
+    }
     ?>
 
     <div class="row">
@@ -70,14 +74,16 @@
                         print '<p>Vous vous plaisez mutuellement !</p>';
                     } else {
                         $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
-                        print '<p>Vous vous plaisez mutuellement !</p>';
+                        print '<p>Vous attendez la réponse de l\'autre personne</p>';
                     }
                 } else {
                     print '<p>En attente...</p>';
-
-                    $pmMgr->createMatchEntre($_SESSION['pers']->getidPersonne(), $_POST['id']);
+                    if (isset($_POST["like"])) {
+                        $pmMgr->createMatchEntre($_SESSION['pers']->getidPersonne(), $_POST['id']);
+                        $_SESSION["buffid"] = $_POST["id"];
+                        header('refresh:;url=index.php?page=4');
+                    }
                 }
-
                 ?>
 
                 <form method="post" action="index.php?page=4" <?php

@@ -3,10 +3,12 @@
 /***
  * Classe pour interfacer le serveur PHP au serveur MySQL
  */
-class PersonnesMatchManager {
+class PersonnesMatchManager
+{
     private $db;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->db = $db;
     }
 
@@ -14,7 +16,8 @@ class PersonnesMatchManager {
     /**
      * Savoir si un match existe déjà entre deux personnes (pour ne pas le duppliquer dans l'autre sens)
      */
-    public function getMatchEntre($id1, $id2) {
+    public function getMatchEntre($id1, $id2)
+    {
         $requete = $this->db->prepare(
             'SELECT ID_PERSONNE1, ID_PERSONNE2, STATUTPERSONNE1, STATUTPERSONNE2
                 FROM personnesmatch
@@ -34,7 +37,7 @@ class PersonnesMatchManager {
 
         if (isset($personneMatchs[0])) {
             return $personneMatchs[0];
-        }else{
+        } else {
             return false;
         }
     }
@@ -43,7 +46,8 @@ class PersonnesMatchManager {
      * Crée un match entre deux personnes
      *  $id1 : la personne ÉMÉTRICE du match, $id2 : la réceptrice
      */
-    public function createMatchEntre($id1, $id2) {
+    public function createMatchEntre($id1, $id2)
+    {
         $requete = $this->db->prepare(
             'INSERT INTO personnesmatch (ID_PERSONNE1, ID_PERSONNE2, STATUTPERSONNE1, STATUTPERSONNE2)
                 VALUES (:id1, :id2, "DEMANDE", "EN ATTENTE")');
@@ -60,7 +64,8 @@ class PersonnesMatchManager {
     /**
      * Permet de valider un match en attente
      */
-    public function validerMatch($id1, $id2) {
+    public function validerMatch($id1, $id2)
+    {
         $requete = $this->db->prepare(
             'UPDATE personnesmatch SET STATUTPERSONNE2 = "VALIDE"
                 WHERE ID_PERSONNE1 = :id2 AND ID_PERSONNE2 = :id1'
@@ -78,7 +83,8 @@ class PersonnesMatchManager {
     /**
      * Permet d'obtenir la liste des matchs en attente d'une personne
      */
-    public function getMatchsEnAttente($id) {
+    public function getMatchsEnAttente($id)
+    {
         $requete = $this->db->prepare(
             'SELECT ID_PERSONNE1, ID_PERSONNE2, STATUTPERSONNE1, STATUTPERSONNE2
                 FROM personnesmatch
@@ -98,7 +104,7 @@ class PersonnesMatchManager {
 
         if (isset($personneMatchs[0])) {
             return $personneMatchs;
-        }else{
+        } else {
             return false;
         }
     }

@@ -17,25 +17,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <?php
+                <?php
                     $prtqMngr = new PratiqueManager($pdo);
                     $sportsReputes = $prtqMngr->topSports();
-                    ?>
-                    <th scope="row">1</th>
-                    <td><?php echo $sportsReputes[0]->getNomSport() ?></td>
-                    <td><?php echo $sportsReputes[0]->getnbParticipant() ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td><?php echo $sportsReputes[1]->getNomSport() ?></td>
-                    <td><?php echo $sportsReputes[1]->getnbParticipant() ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td><?php echo $sportsReputes[2]->getNomSport() ?></td>
-                    <td><?php echo $sportsReputes[2]->getnbParticipant() ?></td>
-                </tr>
+
+                    foreach ($sportsReputes as $key => $value) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $key + 1; ?></th>
+                        <td><?php echo $value->getNomSport() ?></td>
+                        <td><?php echo $value->getnbParticipant() ?></td>
+                    </tr>
+                    <?php } ?>
                 </tbody>
             </table>
 

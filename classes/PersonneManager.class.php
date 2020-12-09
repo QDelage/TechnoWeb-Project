@@ -152,17 +152,26 @@ class PersonneManager {
         $requete->bindValue(':mail',$personne->getMail(),PDO::PARAM_STR);
         $requete->bindValue(':id',$personne->getidPersonne(),PDO::PARAM_INT);
         // Il faut de nouveau hasher le mot de passe fourni avec le même grain de sel
-        $pwd = $personne->getMDP();
-        $salt = "48@!alsd";
-        $pwd = hash('sha256', $pwd).$salt;
-        $pwd = hash('sha256', $pwd);
-        $requete->bindValue(':pwd',$pwd);
+
+        // On hash le mot de passe s'il a changé
+        if ($personne->getMDP() == $this->getPersonne($personne->getidPersonne())) {
+            $pwd = $personne->getMDP();
+            $requete->bindValue(':pwd',$pwd);
+        } else {
+            $pwd = $personne->getMDP();
+            $salt = "48@!alsd";
+            $pwd = hash('sha256', $pwd).$salt;
+            $pwd = hash('sha256', $pwd);
+            $requete->bindValue(':pwd',$pwd);
+        }
 
 
         $requete->execute();
 
         $requete->closeCursor();
     }
+
+
 
     /**
      * Permet d'obtenir une personne selon son ID

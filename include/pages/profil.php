@@ -73,7 +73,6 @@
                     if ($match->isReciproque()) {
                         print '<p>Vous vous plaisez mutuellement !</p>';
                     } else {
-                        $pmMgr->validerMatch($_SESSION['pers']->getidPersonne(), $_POST['id']);
                         print '<p>Vous attendez la réponse de l\'autre personne</p>';
                     }
                 } else {

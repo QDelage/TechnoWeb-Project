@@ -14,13 +14,14 @@
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" required>
         </div>
-        <div class="form-group">
-            <label for="description">Decription</label>
-            <textarea id="Description" name="description" class="form-control" placeholder="Decripttion de votre profil"></textarea>
-        </div>
+
         <div class="form-group">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Decription</label>
+            <textarea id="Description" name="description" class="form-control" placeholder="Decripttion de votre profil"></textarea>
         </div>
         <div class="form-group">
             <label for="motdepasse">Mot de passe</label>

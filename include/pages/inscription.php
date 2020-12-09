@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="description">Decription</label>
-            <textarea id="Description" name="description" class="form-control" placeholder="Description de votre profil"></textarea>
+            <textarea required id="Description" name="description" class="form-control" placeholder="Description de votre profil"></textarea>
         </div>
         <div class="form-group">
             <label for="motdepasse">Mot de passe</label>

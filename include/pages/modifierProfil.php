@@ -64,7 +64,7 @@
                     </button>
                 </form>
 
-                <label>Descripition : <?php
+                <label>Description : <?php
                     print $_SESSION['pers']->getDescription(); ?>
                 </label>
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('description');">

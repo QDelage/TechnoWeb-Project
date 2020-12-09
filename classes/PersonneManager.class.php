@@ -45,7 +45,7 @@ class PersonneManager {
      * Vérifie les informations de connexion (mail et mdp) d'un utilisateur pour le connecter
      */
     public function connexion($mail, $pwd){
-        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, PHOTO, ID_DEPARTEMENT, MAIL, MDPHASH 
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, PHOTO, DESCRIPTION, ID_DEPARTEMENT, MAIL, MDPHASH 
                     FROM personne 
                     WHERE mail=:log AND mdpHash=:pwd';
 

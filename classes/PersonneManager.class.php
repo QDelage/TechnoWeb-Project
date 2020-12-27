@@ -154,7 +154,7 @@ class PersonneManager {
         // Il faut de nouveau hasher le mot de passe fourni avec le même grain de sel
 
         // On hash le mot de passe s'il a changé
-        if ($personne->getMDP() == $this->getPersonne($personne->getidPersonne())) {
+        if ($personne->getMDP() == $this->getPersonne($personne->getidPersonne())->getMDP()) {
             $pwd = $personne->getMDP();
             $requete->bindValue(':pwd',$pwd);
         } else {
@@ -175,10 +175,9 @@ class PersonneManager {
 
     /**
      * Permet d'obtenir une personne selon son ID
-     * On ne récupère que les informations nécessaires (pas de mdp ni de mail)
      */
     public function getPersonne($id){
-        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, DESCRIPTION, PHOTO, ID_DEPARTEMENT 
+        $sql = 'SELECT ID_PERSONNE, NOM, PRENOM, DESCRIPTION, PHOTO, ID_DEPARTEMENT, MDPHASH 
                     FROM personne 
                     WHERE ID_PERSONNE=:id';
 

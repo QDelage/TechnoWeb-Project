@@ -12,22 +12,44 @@
 
             <?php if (empty($_POST)) { ?>
 
+                <!-- On change l'affichage de l'image selon qu'on soit sur mobile ou PC -->
                 <img id="ImgProfil" class="img-circle mb-4 d-none d-sm-inline"
-                     src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
+                    src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
                 <img id="ImgProfilSmall" class="img-circle mb-4 d-sm-none"
-                     src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
+                    src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
 
-                <form class="mb-5" method="post" action="index.php?page=3" enctype="multipart/form-data">
-                    <div class="file-field w-100">
-                        <div class="btn btn-primary btn-sm float-left w-100 mb-3">
-                            <span>Choose file</span>
-                            <input type="file" class="w-100" name="img" required>
-                        </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <!-- On change l'affichage de la modif de l'image selon qu'on soit sur mobile ou PC -->
+                    <div class="col-6 d-none d-sm-inline">
+                        <form class="mb-5 w-100" method="post" action="index.php?page=3" enctype="multipart/form-data">
+                            <div class="file-field w-100">
+                                <div class="btn btn-primary btn-sm float-left w-100 mb-3">
+                                    <span>Choisissez l'image</span>
+                                    <input type="file" class="w-100" name="img" required>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <input class="btn btn-primary btn-sm" type="submit" value="Modifier" name="submit">
+                        </form>
                     </div>
-                    <br/>
-                    <br/>
-                    <input class="btn btn-primary btn-sm" type="submit" value="Modifier" name="submit">
-                </form>
+
+                    <div class="col-12 d-sm-none">
+                        <form class="mb-5 w-100" method="post" action="index.php?page=3" enctype="multipart/form-data">
+                            <div class="file-field w-100">
+                                <div class="btn btn-primary btn-sm float-left w-100 mb-3">
+                                    <span>Choisissez l'image</span>
+                                    <input type="file" class="w-100" name="img" required>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <input class="btn btn-primary btn-sm" type="submit" value="Modifier" name="submit">
+                        </form>
+                    </div>
+                    <div class="col"></div>
+                </div>
 
                 <label>Nom : <?php
                     print $_SESSION['pers']->getNom(); ?>

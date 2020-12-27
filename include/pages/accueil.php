@@ -8,7 +8,7 @@
         <?php if (empty($_POST) && !isset($_GET['deconnexion'])) { ?>
             <!-- Liste des sports de la DB -->
             <label>Sports :</label>
-            <table class="table">
+            <table class="table table-striped table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>

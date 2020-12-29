@@ -1,12 +1,12 @@
 # Projet TechnoWeb
 
-Développement d'un site de rencontre pour personnes sportives dans le cadre du module TechnoWeb de la L3 mention Informatique à la FST de LIMOGES.
+Développement d'un site de rencontre pour personnes sportives dans le cadre du module TechnoWeb de la L3 Informatique à la FST (faculté de sciences et techniques) de LIMOGES.
 
 Nous nous inspirons du sujet auquel nous souhaitons apporter quelques modifications - et ajouts - de fonctionnalités tant graphique que fonctionnelles.
 
 ### Prérequis
 
-Serveur Web, Serveur PHP, Serveur MySQL pour la base de données.
+Serveur Web, Serveur PHP, Serveur MySQL (ou équivalent) pour la base de données.
 
 Il faut le droit en écriture dans le dossier img/profils/ pour pouvoir modifier les photos de profils !
 
@@ -27,7 +27,7 @@ Les fichiers du projet sont trié selon l'arborescence suivante (fichiers PHP un
 
 ## Intégré avec
 
-* [MariaDB](https://mariadb.org/) - Le SGBD utilisé (MySQL fait le même travaille)
+* [MariaDB](https://mariadb.org/) - Le SGBD utilisé (MySQL fait le même traivail)
 * [PHP](https://www.php.net/manual/fr/index.php) - Langage de programmation coté serveur
 * [JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript) - Langage script des pages web
 * [BootStrap](https://getbootstrap.com/) - Framework pour la mise en page

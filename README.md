@@ -13,7 +13,7 @@ Il faut le droit en écriture dans le dossier img/profils/ pour pouvoir modifier
 ### Installation
 
 1. Créer une base de données SQL et y importer les données du script présent dans SQL/DB.sql
-2. Configurer la base et le fichier de configuration (include/pages/confid.inc.php) en adéquation pour garantir l'accès
+2. Configurer la base et le fichier de configuration (include/pages/config.inc.php) en adéquation pour garantir l'accès
 
 ### Arborescence
 

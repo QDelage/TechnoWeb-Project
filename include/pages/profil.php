@@ -72,7 +72,7 @@
 
                     if ($match->isReciproque()) {
                         print '<p>Vous vous plaisez mutuellement !</p>';
-                    } else {
+                    } else if ($match->getIdPersonne1() == $_SESSION['pers']->getidPersonne()) {
                         print '<p>Vous attendez la réponse de l\'autre personne</p>';
                     }
                 } else {

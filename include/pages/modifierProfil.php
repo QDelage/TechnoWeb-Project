@@ -185,19 +185,21 @@
                         <?php
                         $pratiqueMngr = new PratiqueManager($pdo);
                         $pratiques = $pratiqueMngr->getSport($_SESSION["pers"]);
-                        foreach ($pratiques as $pratique) {
-                            echo "<tr>";
-                            echo "<td>" . $pratique->getNomSport() . "</td>";
-                            if ($pratique->getNiveau() == 1) {
-                                echo "<td>Debutant</td>";
-                            } else if ($pratique->getNiveau() == 2) {
-                                echo "<td>Intermediaire</td>";
-                            } else {
-                                echo "<td>Confirmé</td>";
+                        if (isset($pratiques)) {
+                            foreach ($pratiques as $pratique) {
+                                echo "<tr>";
+                                echo "<td>" . $pratique->getNomSport() . "</td>";
+                                if ($pratique->getNiveau() == 1) {
+                                    echo "<td>Debutant</td>";
+                                } else if ($pratique->getNiveau() == 2) {
+                                    echo "<td>Intermediaire</td>";
+                                } else {
+                                    echo "<td>Confirmé</td>";
+                                }
+                                echo "<input name='idSport' value='" . $pratique->getidSport() . "' hidden><td><input type='submit' value='Supprimer'></td>";
+                                echo "</tr>";
+    
                             }
-                            echo "<input name='idSport' value='" . $pratique->getidSport() . "' hidden><td><input type='submit' value='Supprimer'></td>";
-                            echo "</tr>";
-
                         }
 
                         ?>

@@ -157,6 +157,41 @@
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('mdp');">Modifer
                 </button>
                 <br/><br/>
+                <label>
+                    Sports :
+                </label>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sport</th>
+                        <th scope="col">Niveau</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                $pratiqueMngr = new PratiqueManager($pdo);
+                $pratiques = $pratiqueMngr->getSport($_SESSION["pers"]);
+                foreach ($pratiques as $pratique) {
+                    echo "<tr>";
+                    echo "<td>".$pratique->getNomSport()."</td>";
+                    if ($pratique->getNiveau() == 1) {
+                        echo "<td>Debutant</td>";
+                    }
+                    else if ($pratique->getNiveau() == 2) {
+                        echo "<td>Intermediaire</td>";
+                    }
+                    else {
+                        echo "<td>Confirmé</td>";
+                    }
+                    echo "<td>Supprimer</td>";
+                    echo "</tr>";
+
+                }
+
+                ?>
+                    </tbody>
+                </table>
                 <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
                     <!-- Formulaire pour modifier le prénom -->
                     <label>Nouveau mot de passe : </label>

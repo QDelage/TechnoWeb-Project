@@ -51,6 +51,20 @@ class PratiqueManager
         $requete->closeCursor();
         return $pratiques;
     }
+    public function getSport($personne) {
+        $sql = 'SELECT NOM,NIVEAU FROM pratique INNER JOIN sport ON pratique.id_sport = sport.id_sport WHERE id_personne = :id_personne';
+
+        $requete = $this->db->prepare($sql);
+
+        $requete->bindValue(':id_personne', $personne->getidPersonne());
+        $requete->execute();
+        while ($pratique = $requete->fetch(PDO::FETCH_OBJ)) {
+            $pratiques[] = new Pratique($pratique);
+        }
+
+        $requete->closeCursor();
+        return $pratiques;
+    }
 
 
 }

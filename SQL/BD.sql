@@ -149,7 +149,7 @@ CREATE TABLE `personne` (
   `id_personne` int(11) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
-  `Description` text NOT NULL DEFAULT 'Lorem Ipsum',
+  `Description` text NOT NULL,
   `photo` varchar(20) NOT NULL DEFAULT 'default.png',
   `id_departement` varchar(3) NOT NULL,
   `mail` varchar(50) NOT NULL,

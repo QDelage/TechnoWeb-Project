@@ -156,10 +156,22 @@
                 </label>
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('mdp');">Modifer
                 </button>
+                <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
+                    <!-- Formulaire pour modifier le prénom -->
+                    <label>Nouveau mot de passe : </label>
+                    <input name="password" type="password" required>
+
+                    <input class="btn btn-primary btn-sm" type="submit" value="OK">
+                    <button onclick="modifierProfilCacherChamp('mdp');" class="btn btn-danger btn-sm" type="button">X
+                    </button>
+                </form>
+
                 <br/><br/>
                 <label>
                     Sports :
                 </label>
+
+                <form id="profilFormsupressionSport" method="post" action="index.php?page=3">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -184,7 +196,7 @@
                     else {
                         echo "<td>Confirmé</td>";
                     }
-                    echo "<td>Supprimer</td>";
+                    echo "<td><input type='submit' name='idSport' value='".$pratique->getidSport()."'></td>";
                     echo "</tr>";
 
                 }
@@ -192,19 +204,44 @@
                 ?>
                     </tbody>
                 </table>
-                <form id="profilFormMDP" class="hide mb-4" method="post" action="index.php?page=3">
-                    <!-- Formulaire pour modifier le prénom -->
-                    <label>Nouveau mot de passe : </label>
-                    <input name="password" type="password" required>
+                </form>
+                <label>Ajouter un sport
+                </label>
+                <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('sport');">Modifer
+                </button>
+                <form id="profilFormAjouterSport" class="hide mb-4" method="post" action="index.php?page=3">
 
+                    <?php
+                    $sprsMgr = new SportManager($pdo);
+                    $sprs = $sprsMgr->getAllSports($pdo);
+                    ?>
+                    <label for="sport">Sport</label>
+                    <select id="sport" class="custom-select" required name="sport">
+
+                        <option selected disabled>Choisissez votre sport</option>
+                        <?php
+                        foreach ($sprs as $key => $value) { ?>
+
+                            <option value="<?php echo $value->getIdSport(); ?>"><?php echo $value->getNom(); ?></option>
+
+                        <?php } ?>
+                    </select>
+                    <label for="niveau">Niveau</label>
+                    <select required id="niveau" name="niveau" class="custom-select">
+                        <option selected disabled>Choisissez votre niveau</option>
+                        <option value="1">Débutant</option>
+                        <option value="2">Intermédiaire</option>
+                        <option value="3">Confirmé</option>
+                    </select>
                     <input class="btn btn-primary btn-sm" type="submit" value="OK">
-                    <button onclick="modifierProfilCacherChamp('mdp');" class="btn btn-danger btn-sm" type="button">X
+                    <button onclick="modifierProfilCacherChamp('sport');" class="btn btn-danger btn-sm" type="button">X
                     </button>
                 </form>
 
             <?php } else {
                 $persMgr = new PersonneManager($pdo);
                 $dptMgr = new DepartementManager($pdo);
+                $pratiqueMngr = new PratiqueManager($pdo);
                 $pers = $_SESSION['pers']; // Passage par référence, donc la modification est faite aussi en session
                 ?>
 
@@ -235,6 +272,20 @@
                 }
                 if (isset($_POST['password'])) {
                     $pers->setMDP($_POST['password']);
+                    header('refresh:0;url=index.php?page=3');
+                }
+                if (isset($_POST['idSport'])) {
+                    $pratiqueMngr->SupprimerSport($_POST['idSport'],$_SESSION["pers"]);
+                    header('refresh:0;url=index.php?page=3');
+                }
+                if (isset($_POST['niveau'])) {
+                    $valuesPratique = array(
+                        "ID_PERSONNE" =>$_SESSION["pers"]->getidPersonne(),
+                        "ID_SPORT"=> $_POST["sport"],
+                        "NIVEAU"=> $_POST['niveau']
+                    );
+                    $pratiqueAdd = new Pratique($valuesPratique);
+                    $pratiqueMngr->ajout($pratiqueAdd);
                     header('refresh:0;url=index.php?page=3');
                 }
 

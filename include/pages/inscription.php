@@ -65,7 +65,6 @@
 
                 <?php } ?>
             </select>
-            </select>
         </div>
         <div class="form-group">
             <label for="niveau">Niveau</label>

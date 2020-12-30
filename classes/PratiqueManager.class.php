@@ -52,18 +52,29 @@ class PratiqueManager
         return $pratiques;
     }
     public function getSport($personne) {
-        $sql = 'SELECT NOM,NIVEAU FROM pratique INNER JOIN sport ON pratique.id_sport = sport.id_sport WHERE id_personne = :id_personne';
+        $sql = 'SELECT pratique.id_sport AS ID_SPORT, NOM,NIVEAU FROM pratique INNER JOIN sport ON pratique.id_sport = sport.id_sport WHERE id_personne = :id_personne';
 
         $requete = $this->db->prepare($sql);
 
         $requete->bindValue(':id_personne', $personne->getidPersonne());
         $requete->execute();
         while ($pratique = $requete->fetch(PDO::FETCH_OBJ)) {
+
             $pratiques[] = new Pratique($pratique);
         }
 
         $requete->closeCursor();
         return $pratiques;
+    }
+
+    public function SupprimerSport($idSport, $personne)
+    {
+        $sql = 'DELETE FROM pratique WHERE id_sport = :id_sport AND id_personne = :id_personne';
+        $requete = $this->db->prepare($sql);
+
+        $requete->bindValue(':id_sport', $idSport);
+        $requete->bindValue(':id_personne', $personne->getidPersonne());
+        $requete->execute();
     }
 
 

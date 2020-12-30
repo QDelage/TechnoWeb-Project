@@ -26,7 +26,9 @@ function modifierProfilAfficherChamp($champ){
         case "mdp":
             document.getElementById("profilFormMDP").style.display = "block";
             break;
-    
+        case "sport":
+            document.getElementById("profilFormAjouterSport").style.display = "block";
+            break;
         default:
             break;
     }
@@ -60,6 +62,9 @@ function modifierProfilCacherChamp($champ){
 
         case "mdp":
             document.getElementById("profilFormMDP").style.display = "none";
+            break;
+        case "sport":
+            document.getElementById("profilFormAjouterSport").style.display = "none";
             break;
     
         default:

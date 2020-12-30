@@ -14,9 +14,9 @@
 
                 <!-- On change l'affichage de l'image selon qu'on soit sur mobile ou PC -->
                 <img id="ImgProfil" class="img-circle mb-4 d-none d-sm-inline"
-                    src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
+                     src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
                 <img id="ImgProfilSmall" class="img-circle mb-4 d-sm-none"
-                    src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
+                     src="img/profils/<?php print $_SESSION['pers']->getPhoto(); ?>"><br/>
 
                 <div class="row">
                     <div class="col"></div>
@@ -99,7 +99,8 @@
                     <textarea name="description" type="text" required></textarea>
 
                     <input class="btn btn-primary btn-sm" type="submit" value="OK">
-                    <button onclick="modifierProfilCacherChamp('description');" class="btn btn-danger btn-sm" type="button">
+                    <button onclick="modifierProfilCacherChamp('description');" class="btn btn-danger btn-sm"
+                            type="button">
                         X
                     </button>
                 </form>
@@ -172,38 +173,36 @@
                 </label>
 
                 <form id="profilFormsupressionSport" method="post" action="index.php?page=3">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Sport</th>
-                        <th scope="col">Niveau</th>
-                        <th scope="col">Supprimer</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                <?php
-                $pratiqueMngr = new PratiqueManager($pdo);
-                $pratiques = $pratiqueMngr->getSport($_SESSION["pers"]);
-                foreach ($pratiques as $pratique) {
-                    echo "<tr>";
-                    echo "<td>".$pratique->getNomSport()."</td>";
-                    if ($pratique->getNiveau() == 1) {
-                        echo "<td>Debutant</td>";
-                    }
-                    else if ($pratique->getNiveau() == 2) {
-                        echo "<td>Intermediaire</td>";
-                    }
-                    else {
-                        echo "<td>Confirmé</td>";
-                    }
-                    echo "<input name='idSport' value='".$pratique->getidSport()."' hidden><td><input type='submit' value='Supprimer'></td>";
-                    echo "</tr>";
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Sport</th>
+                            <th scope="col">Niveau</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $pratiqueMngr = new PratiqueManager($pdo);
+                        $pratiques = $pratiqueMngr->getSport($_SESSION["pers"]);
+                        foreach ($pratiques as $pratique) {
+                            echo "<tr>";
+                            echo "<td>" . $pratique->getNomSport() . "</td>";
+                            if ($pratique->getNiveau() == 1) {
+                                echo "<td>Debutant</td>";
+                            } else if ($pratique->getNiveau() == 2) {
+                                echo "<td>Intermediaire</td>";
+                            } else {
+                                echo "<td>Confirmé</td>";
+                            }
+                            echo "<input name='idSport' value='" . $pratique->getidSport() . "' hidden><td><input type='submit' value='Supprimer'></td>";
+                            echo "</tr>";
 
-                }
+                        }
 
-                ?>
-                    </tbody>
-                </table>
+                        ?>
+                        </tbody>
+                    </table>
                 </form>
                 <label>Ajouter un sport
                 </label>
@@ -275,14 +274,14 @@
                     header('refresh:0;url=index.php?page=3');
                 }
                 if (isset($_POST['idSport'])) {
-                    $pratiqueMngr->SupprimerSport($_POST['idSport'],$_SESSION["pers"]);
+                    $pratiqueMngr->SupprimerSport($_POST['idSport'], $_SESSION["pers"]);
                     header('refresh:0;url=index.php?page=3');
                 }
                 if (isset($_POST['niveau'])) {
                     $valuesPratique = array(
-                        "ID_PERSONNE" =>$_SESSION["pers"]->getidPersonne(),
-                        "ID_SPORT"=> $_POST["sport"],
-                        "NIVEAU"=> $_POST['niveau']
+                        "ID_PERSONNE" => $_SESSION["pers"]->getidPersonne(),
+                        "ID_SPORT" => $_POST["sport"],
+                        "NIVEAU" => $_POST['niveau']
                     );
                     $pratiqueAdd = new Pratique($valuesPratique);
                     $pratiqueMngr->ajout($pratiqueAdd);

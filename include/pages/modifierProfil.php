@@ -196,7 +196,7 @@
                     else {
                         echo "<td>Confirmé</td>";
                     }
-                    echo "<td><input type='submit' name='idSport' value='".$pratique->getidSport()."'></td>";
+                    echo "<input name='idSport' value='".$pratique->getidSport()."' hidden><td><input type='submit' value='Supprimer'></td>";
                     echo "</tr>";
 
                 }

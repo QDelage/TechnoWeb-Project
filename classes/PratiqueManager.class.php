@@ -64,7 +64,10 @@ class PratiqueManager
         }
 
         $requete->closeCursor();
-        return $pratiques;
+        if (isset($pratiques)) {
+            return $pratiques;
+        }
+        return null;
     }
 
     public function SupprimerSport($idSport, $personne)

@@ -103,15 +103,7 @@
 
                 </form>
 
-                <?php
-                if ($match != false) {
-                    if (isset($match) && ($match->getIdPersonne1()) == $_SESSION['pers']->getidPersonne()) {
-                        print '<br/><br/></br.><p>Vous avez déjà liké cette personne. Attendez sa réponse !</p>';
-                    }
-                } ?>
-
             <?php } ?>
-
 
         </div>
         <div class="col"></div>

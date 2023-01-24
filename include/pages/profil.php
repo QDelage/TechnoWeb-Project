@@ -37,13 +37,15 @@
 
 
                 <label>Nom : <?php
-                    print $personne->getNom(); ?>
+                    echo htmlspecialchars($personne->getNom(),  ENT_QUOTES, 'UTF-8')
+                    ?>
                 </label>
                 <br/><br/>
 
 
                 <label>Prénom : <?php
-                    print $personne->getPrenom(); ?>
+                    echo htmlspecialchars($personne->getPrenom(),  ENT_QUOTES, 'UTF-8');
+                    ?>
                 </label>
                 <br/><br/>
 
@@ -52,11 +54,13 @@
                     $dptMgr = new DepartementManager($pdo);
                     $dpt = $dptMgr->getDepartement($personne->getIdDepartement());
                     $dpts = $dptMgr->getAllDepartments();
-                    print $dpt->getNom(); ?>
+                    echo htmlspecialchars($dpt->getNom(),  ENT_QUOTES, 'UTF-8');
+                    ?>
                 </label>
                 <br/><br/>
                 <label>Description : <?php
-                    print $personne->getDescription(); ?>
+                    echo htmlspecialchars($personne->getDescription(),  ENT_QUOTES, 'UTF-8');
+                    ?>
                 </label>
                 <br/><br/>
                 <br/><br/>

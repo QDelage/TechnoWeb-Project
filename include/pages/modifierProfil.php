@@ -294,11 +294,16 @@
                     // On placera la photo dans le bon dossier, avec pour nom l'id de la personne
                     $target_dir = "img/profils/";
                     $names = explode(".", $_FILES['img']["name"]);
+                    $uploadOk = 1;
+                    if ($names[1] != "png" and $names[1] != "jpg" and $names[1] != "jpeg" and $names[1] != "gif") {
+                        echo "Format non accepté. Veuillez fournir un fichier png, jpg, jpeg, ou gif.";
+                        $uploadOk = 0;
+                    }
                     $name = $_SESSION['pers']->getidPersonne() . "." . $names[1];
                     $target_file = $target_dir . basename($name);
 
                     // On vérifie s'il s'agit bien d'un fichier image
-                    if (isset($_POST["submit"])) {
+                    if (isset($_POST["submit"]) and $uploadOk == 1) {
                         $check = getimagesize($_FILES["img"]["tmp_name"]);
                         if ($check !== false) {
                             $uploadOk = 1;

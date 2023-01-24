@@ -69,7 +69,9 @@
             $pers = $persMgr->connexion($mail, $pwd);
 
             if ($pers) {
-                $_SESSION['pers'] = $pers;
+               session_start();
+               session_regenerate_id();    
+               $_SESSION['pers'] = $pers;
                 print '<p class="text-center">Bienvennue ' . ($_SESSION['pers'])->getPrenom() . ' !</p>';
                 header('refresh:2;url=index.php?page=3');
             } else { ?>
@@ -84,7 +86,8 @@
 
         } else {
             // Deconnexion
-            session_destroy(); ?>
+           session_regenerate_id();   
+           session_destroy(); ?>
 
             <h2 class="text-center">Vous avez été deconnecté</h2>
             <p class="text-center">Redirection en cours...</p>

@@ -52,7 +52,7 @@
                 </div>
 
                 <label>Nom : <?php
-                    print $_SESSION['pers']->getNom(); ?>
+                    echo htmlspecialchars($_SESSION['pers']->getNom(),  ENT_QUOTES, 'UTF-8'); ?>
                 </label>
                 <!-- Bouton pour afficher le formulaire de modification de CET élément -->
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('nom');">Modifer
@@ -69,7 +69,7 @@
                 </form>
 
                 <label>Prénom : <?php
-                    print $_SESSION['pers']->getPrenom(); ?>
+                    echo htmlspecialchars($_SESSION['pers']->getPrenom(),  ENT_QUOTES, 'UTF-8'); ?>
                 </label>
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('prenom');">
                     Modifer
@@ -87,7 +87,7 @@
                 </form>
 
                 <label>Description : <?php
-                    print $_SESSION['pers']->getDescription(); ?>
+                    echo htmlspecialchars($_SESSION['pers']->getDescription(),  ENT_QUOTES, 'UTF-8'); ?>
                 </label>
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('description');">
                     Modifer
@@ -136,7 +136,7 @@
                 </form>
 
                 <label>Mail : <?php
-                    print $_SESSION['pers']->getMail(); ?>
+                    echo htmlspecialchars($_SESSION['pers']->getMail(),  ENT_QUOTES, 'UTF-8'); ?>
                 </label>
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifierProfilAfficherChamp('mail');">
                     Modifer

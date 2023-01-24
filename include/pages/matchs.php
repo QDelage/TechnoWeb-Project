@@ -29,8 +29,8 @@
                 $personne = $pMgr->getPersonne($value->getIdPersonne1());
                 ?>
                 <tr>
-                    <td><?php echo $personne->getPrenom();?></td>
-                    <td><?php echo $personne->getNom();?></td>
+                        <td><?php echo htmlspecialchars($personne->getPrenom(),  ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?php echo htmlspecialchars($personne->getNom(),  ENT_QUOTES, 'UTF-8') ?></td>
                     <td>
                         <form method="post" action="index.php?page=4">
                             <button name="id" value="<?php print $personne->getidPersonne(); ?>" class="btn btn-light">Profil</button>
